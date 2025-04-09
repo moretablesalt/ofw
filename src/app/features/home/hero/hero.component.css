@@ -1,0 +1,117 @@
+section {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 0 180px;
+}
+
+.hero-text {
+  max-width: 550px;
+  flex:1;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 5.35rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hero-text .bold {
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.625rem;
+}
+
+.btn {
+  background-color: #219d69;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: .5rem 1.5rem .625rem 1.5rem;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.hero-image {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.wave-top {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: auto;
+  z-index: -1;
+}
+
+.wave-bottom {
+  position: absolute;
+  left: 0;
+  width: auto;
+  z-index: -1;
+  bottom: 0px;
+}
+
+@media (max-width: 1440px) {
+  section {
+    padding: 0 140px
+  }
+
+  .hero-text {
+    max-width: 450px;
+  }
+
+  .wave-bottom {
+    bottom: -60px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 0 20px;
+    flex-direction: column;
+    height: auto;
+    gap: 0;
+  }
+  .wave-bottom, .wave-top {
+    display: none;
+  }
+
+  .hero-text {
+    order: 2;
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

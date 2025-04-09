@@ -1,0 +1,13 @@
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  flex: 1;
+  order: 2;
+}
+img, .hero-image {
+  flex: 1;
+  width: 100%;
+}
