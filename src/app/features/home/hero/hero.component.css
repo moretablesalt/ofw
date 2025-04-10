@@ -47,6 +47,7 @@ section {
   margin-top: 2rem;
   margin-bottom: 2rem;
   flex: 1;
+  min-width: 500px;
 }
 
 .hero-image img {
@@ -109,9 +110,11 @@ section {
   .hero-image {
     margin-top: 2rem;
     margin-bottom: 0;
+    min-width: 300px;
   }
 
   .btn {
     width: 100%;
+    margin-bottom: 2rem;
   }
 }

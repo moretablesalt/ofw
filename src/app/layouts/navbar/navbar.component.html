@@ -6,4 +6,20 @@
     <li>Contact Us</li>
     <li class="cta">Claims</li>
   </ul>
+  <span class="hamburger" aria-label="Toggle menu" (click)="toggleMenu()">
+    {{ isMenuOpen ? '✕' : '☰'}}
+  </span>
 </nav>
+
+<!--  mobile menu-->
+<nav class="sidebar" [class.open]="isMenuOpen" id="sidebar">
+  <div class="mobile-menu">
+    <ul class="mobile-menu-list">
+      <li>Home</li>
+      <li>FAQS</li>
+      <li>Contact Us</li>
+      <li class="cta">Claims</li>
+    </ul>
+  </div>
+</nav>
+
