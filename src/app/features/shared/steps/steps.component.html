@@ -1,0 +1,15 @@
+<section class="stepper">
+  @for (step of steps; track step; let i = $index) {
+    <div class="step" [class.active]="i === currentStep" [class.completed]="i < currentStep">
+      <span class="circle">
+        @if (i < currentStep) {
+          <ng-container><img src="images/steps/check.svg" alt=""></ng-container>
+        }
+        @if (i >= currentStep) {
+          <ng-container>{{ i + 1 }}</ng-container>
+        }
+      </span>
+      <span class="label">{{ step }}</span>
+    </div>
+  }
+</section>
