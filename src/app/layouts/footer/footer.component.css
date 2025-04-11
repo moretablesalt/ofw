@@ -123,5 +123,6 @@ hr {
     width: 100%;
     justify-content: space-between;
     margin-bottom: 20px;
+    overflow: hidden;
   }
 }

@@ -1,0 +1,191 @@
+.coverage-section {
+  padding: 20px 20px;
+  text-align: center;
+  max-width: 1920px;
+  margin: auto;
+  height: auto;
+  box-shadow:
+    5px 0 30px 0 rgba(16, 24, 40, 0.01),
+    -5px 0 30px 0 rgba(16, 24, 40, 0.01);
+}
+
+h2,
+span {
+  font-family: 'Montserrat', serif;
+}
+
+.coverage-section h2 {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 60px;
+}
+
+.coverage-section h2 span {
+  color: #ffc01d; /* Highlighted color for "Coverages" */
+  font-weight: 600;
+}
+
+.coverage-cards {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap; /* Ensures the cards wrap if necessary */
+
+}
+
+.coverage-card {
+  max-width: 440px;
+  background-color: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  padding: 25px;
+  flex: 1;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* Flexbox for buttons */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 65px;
+}
+
+.coverage-card h3 {
+  font-weight: 500;
+  position: relative;
+  //padding-right: 65px; /* Add space to prevent text from overlapping the sparkle */
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.125rem;
+}
+
+.coverage-card hr {
+  border: none;
+  border-top: 1px solid #e4e7ec;
+  margin-bottom: 30px;
+}
+
+.coverage-card ul {
+  list-style: none;
+  margin-bottom: 50px;
+  font-family: 'Work Sans', sans-serif;
+  color: #868e96;
+}
+
+.coverage-card ul li {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.list-icon {
+  margin-right: 10px;
+  margin-left: 4px;
+}
+
+//.coverage-card ul li::before {
+//  content: '✔'; /* Checkmark icon */
+//  color: #219d69; /* Icon color */
+//  margin-right: 10px;
+//  vertical-align: top;
+//  display: inline;
+//}
+
+.card-actions {
+  display: flex;
+  margin-top: auto; /* Pushes the buttons to the bottom */
+  gap: 20px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  width: 50%;
+}
+
+.btn.primary {
+  background-color: #219d69;
+  color: #ffffff;
+}
+
+.btn.primary:hover {
+  background-color: #1d8a5e;
+}
+
+.btn.primary.disabled {
+  background-color: #667085;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: #219d69;
+  border: 1px solid #219d69;
+}
+
+.btn.secondary:hover {
+  background-color: #effff8;
+}
+
+@media (max-width: 1440px) {
+  .coverage-card {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coverage-section {
+    padding: 20px;
+  }
+
+  .coverage-cards {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .coverage-card {
+    padding: 20px;
+    max-width: 100%
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
+//
+//@media (max-width: 480px) {
+//  .coverage-section h2 {
+//    font-size: 28px;
+//  }
+//
+//  .coverage-card {
+//    padding: 20px;
+//    max-width: 100%
+//  }
+//
+//  .coverage-card h3 {
+//    font-size: 18px;
+//    padding-right: 40px; /* Adjust spacing for sparkle */
+//  }
+//
+//  .coverage-card ul li {
+//    font-size: 12px;
+//  }
+//
+//  .btn {
+//    padding: 8px 15px;
+//    font-size: 12px;
+//  }
+//}

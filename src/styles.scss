@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+$color-default: #219d69;
+$color-slightly-dark-green: #1d8a5e;
+
+$color-mischka: #d0d5dd;
+$color-athens-graya: #f2f4f7;
+$color-ghost: #c0c6d3;
+$color-gull-gray: #98a2b3;
+
+$color-woodsmoke: #101113;
+$color-ebony: #101828;
+$color-pale-sky: #667085;
+$color-oxford-blue: #344054;
+$color-white: #ffffff;
+$color-white2: #fefefe;
+$color-athens-gray: #e4e7ec;
+$color-shamrock: #4fd99a;
+$color-lightning-yellow: #ffc01d;
+$color-clear-day: #effff8;
+
+$color-alizarin-crimson: #d92d20;
+
+$default-font-family: 'work sans';
+
+$max-screen: 1920px;
+$screen-xxl: 1440px;
+$screen-xl-2: 1280px;
+$screen-xl: 1200px;
+$screen-lg: 992px;
+$screen-md: 767px;
+$screen-sm: 576px;
+$screen-sm-custom: 550px;
+$screen-xsm-custom-1: 425px;
+$screen-xsm-custom-2: 320px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /*max-width: 1440px;*/
+  margin: 0 auto;
+}

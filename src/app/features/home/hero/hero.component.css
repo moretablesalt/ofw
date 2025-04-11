@@ -1,11 +1,11 @@
 section {
-  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   gap: 2rem;
   padding: 0 180px;
+  height: auto;
 }
 
 .hero-text {
@@ -83,6 +83,10 @@ section {
 
   .wave-bottom {
     bottom: -60px;
+  }
+
+  .coverage-card {
+    max-width: 350px;
   }
 }
 
