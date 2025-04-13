@@ -1,6 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
+import { ProductService } from '../../../services/product.service';
+import { PRODUCTS } from '../../../data/product-data';
+
+interface Coverage {
+  coverage: string;
+  amount: string;
+  note?: string;
+}
+
+
+interface Product {
+  id: string;
+  seaCoverages: Coverage[];
+  landCoverages: Coverage[];
+}
 
 @Component({
   selector: 'app-details',
@@ -8,12 +23,21 @@ import { Router } from '@angular/router';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
-export class DetailsComponent {
-  constructor(private stepsService: StepsService, private router: Router) {
-    this.stepsService.setStep(0);
-  }
+export class DetailsComponent implements OnInit {
+
+  private stepsService = inject(StepsService);
+  private router = inject(Router);
+  public productService = inject(ProductService);
+
+  products = PRODUCTS;
 
   selectedTab: 'sea' | 'land' = 'sea';
+  public selectedProduct: Product | undefined;
+
+  ngOnInit(): void {
+    this.stepsService.setStep(0);
+    this.selectedProduct = this.products.find(p => p.id === this.productService.getProductId())
+  }
 
   selectTab(tab: 'sea' | 'land') {
     this.selectedTab = tab;

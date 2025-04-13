@@ -17,48 +17,18 @@
   <div class="tab-content">
     <table class="coverage-table">
       <thead>
-      <tr>
-        <th>Coverage</th>
-        <th>Insurance Amount</th>
-      </tr>
+        <tr>
+          <th>Coverage</th>
+          <th>Insurance Amount</th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Accidental Death (Loss of Life)</td>
-        <td>USD 15,000.00</td>
-      </tr>
-      <tr>
-        <td>Natural Death<br><small>(Underwritten by First Life Financial Company Inc.)</small></td>
-        <td>USD 10,000.00</td>
-      </tr>
-      <tr>
-        <td>Permanent Total Disablement</td>
-        <td>USD 7,500.00</td>
-      </tr>
-      <tr>
-        <td>Repatriation Cost (Death and/or Termination of Employment)</td>
-        <td>Actual Cost</td>
-      </tr>
-      <tr>
-        <td>Subsistence Allowance</td>
-        <td>USD 100.00 per month, max of (6) months</td>
-      </tr>
-      <tr>
-        <td>Money claims arising from the Employer's liability</td>
-        <td>USD 1,000.00 per month, max of (6) months</td>
-      </tr>
-      <tr>
-        <td>Compassionate Visit</td>
-        <td>Actual Cost</td>
-      </tr>
-      <tr>
-        <td>Medical Evacuation</td>
-        <td>Actual Cost</td>
-      </tr>
-      <tr>
-        <td>Medical Repatriation</td>
-        <td>Actual Cost</td>
-      </tr>
+        @for (coverage of selectedProduct?.seaCoverages; track coverage) {
+          <tr>
+            <td>{{ coverage.coverage }}</td>
+            <td>{{ coverage.amount}}</td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>
@@ -74,42 +44,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Accidental Death (Loss of Life)</td>
-        <td>USD 99,000.00</td>
-      </tr>
-      <tr>
-        <td>Natural Death<br><small>(Underwritten by First Life Financial Company Inc.)</small></td>
-        <td>USD 10,000.00</td>
-      </tr>
-      <tr>
-        <td>Permanent Total Disablement</td>
-        <td>USD 7,500.00</td>
-      </tr>
-      <tr>
-        <td>Repatriation Cost (Death and/or Termination of Employment)</td>
-        <td>Actual Cost</td>
-      </tr>
-      <tr>
-        <td>Subsistence Allowance</td>
-        <td>USD 100.00 per month, max of (6) months</td>
-      </tr>
-      <tr>
-        <td>Money claims arising from the Employer's liability</td>
-        <td>USD 1,000.00 per month, max of (6) months</td>
-      </tr>
-      <tr>
-        <td>Compassionate Visit</td>
-        <td>Actual Cost</td>
-      </tr>
-      <tr>
-        <td>Medical Evacuation</td>
-        <td>Actual Cost</td>
-      </tr>
-      <tr>
-        <td>Medical Repatriation</td>
-        <td>Actual Cost</td>
-      </tr>
+        @for (coverage of selectedProduct?.landCoverages; track coverage) {
+          <tr>
+            <td>{{ coverage.coverage }}</td>
+            <td>{{ coverage.amount}}</td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>

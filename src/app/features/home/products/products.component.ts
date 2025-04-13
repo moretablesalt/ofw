@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,10 @@ export class ProductsComponent {
 
   private router = inject(Router);
 
-  continue() {
+  private productService = inject(ProductService);
+
+  continue(productId: string) {
+    this.productService.setProductId(productId)
     this.router.navigate(['/policy']);
   }
 }
