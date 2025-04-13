@@ -25,6 +25,16 @@ export const routes: Routes = [
         path: 'application-form',
         loadComponent: () => import('./features/policy/application-form/application-form.component').then(m => m.ApplicationFormComponent),
         title: 'Application Form',
+      },
+      {
+        path: 'review',
+        loadComponent: () => import('./features/policy/review/review.component').then(m => m.ReviewComponent),
+        title: 'Application Form',
+      },
+      {
+        path: 'confirmation',
+        loadComponent: () => import('./features/policy/confirmation/confirmation.component').then(m => m.ConfirmationComponent),
+        title: 'Application Form',
       }
     ]
   }

@@ -39,7 +39,10 @@ $screen-xsm-custom-2: 320px;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  /*max-width: 1440px;*/
   margin: 0 auto;
 }
