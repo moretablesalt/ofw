@@ -13,6 +13,12 @@ export class DetailsComponent {
     this.stepsService.setStep(0);
   }
 
+  selectedTab: 'sea' | 'land' = 'sea';
+
+  selectTab(tab: 'sea' | 'land') {
+    this.selectedTab = tab;
+  }
+
   continue() {
     this.router.navigate(['/policy/application-form']);
   }

@@ -1,3 +1,89 @@
-p {
-  height: 200vh;
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: #f7f7f7;;
+  overflow: hidden;
+  border-radius: 6px;
+  padding: 7px;
+}
+
+.tab {
+  flex: 1;
+  border-radius: 6px;
+  padding: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 400;
+  color: grey;
+  background: #f7f7f7;
+}
+
+.tab.active {
+  background-color: #fff;
+  font-weight: 600;
+  color: #219d69;
+}
+
+.coverage-table {
+  font-family: "Work Sans", sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.coverage-table th {
+  padding: 20px 11px;
+  background-color: #f2f4f6;
+  text-align: left;
+  font-weight: bold;
+}
+
+.coverage-table td {
+  padding: 18px 11px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 29px;
+}
+
+.coverage-table small {
+  color: gray;
+  font-size: 12px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.continue {
+  background-color: #219d69;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab-content {
+  overflow: hidden; /* Keeps the sliding content inside */
+  position: relative;
+}
+
+.coverage-table {
+  animation: slideTable 0.4s ease;
+}
+
+@keyframes slideTable {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 }
