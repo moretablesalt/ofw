@@ -1,8 +1,4 @@
-export interface Coverage {
-  coverage: string;
-  amount: string;
-  note?: string;
-}
+import { Coverage } from './coverage.model';
 
 export interface Product {
   id: string;
