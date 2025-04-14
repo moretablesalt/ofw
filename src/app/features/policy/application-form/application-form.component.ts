@@ -1,13 +1,15 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
+import {NzInputDirective} from 'ng-zorro-antd/input';
 
 @Component({
   selector: 'app-application-form',
   imports: [
-    PersonalDataComponent
+    PersonalDataComponent,
+    FormsModule,
   ],
   templateUrl: './application-form.component.html',
   styleUrl: './application-form.component.css'
@@ -43,6 +45,10 @@ export class ApplicationFormComponent implements OnInit {
 
   ngOnInit() {
     this.stepsService.setStep(1);
+
+    this.form.get('personal')?.valueChanges.subscribe(value => {
+      console.log('Personal form changed:', value);
+    });
   }
 
   continue() {

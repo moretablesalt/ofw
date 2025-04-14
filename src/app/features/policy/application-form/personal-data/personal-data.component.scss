@@ -1,0 +1,23 @@
+.form-row {
+  margin-bottom: 24px;
+}
+
+::ng-deep input[nz-input],
+::ng-deep .ant-select,
+::ng-deep .ant-picker {
+  height: 40px;
+}
+
+::ng-deep .ant-select-selector {
+  height: 40px !important;
+  display: flex !important;
+  align-items: center;
+}
+
+::ng-deep .ant-form-item-label > label {
+  font-size: 14px;
+  font-weight: 500;
+}
+::ng-deep .ant-form-item {
+  margin-bottom: 0;
+}

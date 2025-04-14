@@ -2,6 +2,9 @@
   flex: 1;
   width: 100%;
 }
-p {
-  height: 200vh;
+
+.container {
+  padding: 54px;
+  box-shadow: 0 4px 70px #0000000f;
+  background: #fefefe;
 }

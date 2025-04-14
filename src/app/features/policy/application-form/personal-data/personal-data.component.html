@@ -1,38 +1,158 @@
-<div [formGroup]="personalForm">
-  <div class="row">
-    <div><label>Last Name *</label><input formControlName="lastName" type="text"></div>
-    <div><label>First Name *</label><input formControlName="firstName" type="text"></div>
-    <div><label>Middle Initial</label><input formControlName="middleInitial" type="text"></div>
-  </div>
+<h3><strong>Personal Data</strong></h3>
 
-  <div class="row">
-    <div><label>Title *</label><select formControlName="title"><option value="">Select</option></select></div>
-    <div><label>Civil Status *</label><select formControlName="civilStatus"><option value="">Select</option></select></div>
-  </div>
+<form [formGroup]="personalForm" nz-form nzLayout="vertical">
 
-  <div class="row">
-    <div><label>Birth Date *</label><input formControlName="birthDate" type="date"></div>
-    <div><label>Birth Place *</label><input formControlName="birthPlace" type="text"></div>
-  </div>
+  <!-- Name -->
+  <nz-row class="form-row" [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="8">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true">Last Name</nz-form-label>
+        <nz-form-control nzErrorTip="poop">
+          <input nz-input formControlName="lastName" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="8">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true">First Name</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="firstName" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="8">
+      <nz-form-item>
+        <nz-form-label>Middle Initial</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="middleInitial" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
 
-  <div class="row">
-    <div><label>Age *</label><input formControlName="age" type="number"></div>
-    <div><label>TIN *</label><input formControlName="tin" type="text"></div>
-  </div>
+  <!-- Title & Civil Status -->
+  <nz-row class="form-row" [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="title">Title</nz-form-label>
+        <nz-form-control>
+          <nz-select id="title" formControlName="title" nzPlaceHolder="Select">
+            <nz-option nzValue="Mr." nzLabel="Mr."></nz-option>
+            <nz-option nzValue="Ms." nzLabel="Ms."></nz-option>
+            <nz-option nzValue="Mrs." nzLabel="Mrs."></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="civilStatus">Civil Status</nz-form-label>
+        <nz-form-control>
+          <nz-select id="civilStatus" formControlName="civilStatus" nzPlaceHolder="Select">
+            <nz-option nzValue="Single" nzLabel="Single"></nz-option>
+            <nz-option nzValue="Married" nzLabel="Married"></nz-option>
+            <nz-option nzValue="Widowed" nzLabel="Widowed"></nz-option>
+            <nz-option nzValue="Divorced" nzLabel="Divorced"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
 
-  <label>Philippine Address</label>
-  <input formControlName="address" type="text">
+  <!-- Birth -->
+  <nz-row class="form-row" [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true">Birth Date</nz-form-label>
+        <nz-form-control>
+          <nz-date-picker formControlName="birthDate"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="birthPlace">Birth Place</nz-form-label>
+        <nz-form-control>
+          <input id="birthPlace" nz-input formControlName="birthPlace" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
 
-  <div class="row">
-    <div><label>Home Number</label><input formControlName="homePhone" placeholder="+63" type="text"></div>
-    <div><label>Fax Number</label><input formControlName="fax" placeholder="+63" type="text"></div>
-  </div>
+  <!-- Age & TIN -->
+  <nz-row class="form-row" [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="age">Age</nz-form-label>
+        <nz-form-control>
+          <input id="age" nz-input type="number" formControlName="age" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="tin">TIN</nz-form-label>
+        <nz-form-control>
+          <input id="tin" nz-input formControlName="tin" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
 
-  <div class="row">
-    <div><label>Office Number</label><input formControlName="officePhone" placeholder="+63" type="text"></div>
-    <div><label>Mobile Number *</label><input formControlName="mobile" placeholder="+63" type="text"></div>
-  </div>
+  <!-- Address -->
+  <nz-form-item class="form-row">
+    <nz-form-label [nzRequired]="true" nzFor="address">Philippine Address</nz-form-label>
+    <nz-form-control>
+      <input id="address" nz-input formControlName="address" />
+    </nz-form-control>
+  </nz-form-item>
 
-  <label>Email Address *</label>
-  <input formControlName="email" type="email">
-</div>
+  <!-- Home & Fax -->
+  <nz-row class="form-row" [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label nzFor="homePhone">Home Number</nz-form-label>
+        <nz-form-control>
+          <input id="homePhone" nz-input formControlName="homePhone" placeholder="+63" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label nzFor="fax">Fax Number</nz-form-label>
+        <nz-form-control>
+          <input id="fax" nz-input formControlName="fax" placeholder="+63" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+  <!-- Office & Mobile -->
+  <nz-row class="form-row" [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label nzFor="officePhone">Office Number</nz-form-label>
+        <nz-form-control>
+          <input id="officePhone" nz-input formControlName="officePhone" placeholder="+63" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="mobile">Mobile Number</nz-form-label>
+        <nz-form-control>
+          <input id="mobile" nz-input formControlName="mobile" placeholder="+63" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+  <!-- Email -->
+  <nz-form-item class="form-row">
+    <nz-form-label [nzRequired]="true" nzFor="email">Email Address</nz-form-label>
+    <nz-form-control>
+      <input id="email" nz-input formControlName="email" type="email" />
+    </nz-form-control>
+  </nz-form-item>
+
+</form>
