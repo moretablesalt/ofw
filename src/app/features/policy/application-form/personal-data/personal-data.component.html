@@ -1,0 +1,38 @@
+<div [formGroup]="personalForm">
+  <div class="row">
+    <div><label>Last Name *</label><input formControlName="lastName" type="text"></div>
+    <div><label>First Name *</label><input formControlName="firstName" type="text"></div>
+    <div><label>Middle Initial</label><input formControlName="middleInitial" type="text"></div>
+  </div>
+
+  <div class="row">
+    <div><label>Title *</label><select formControlName="title"><option value="">Select</option></select></div>
+    <div><label>Civil Status *</label><select formControlName="civilStatus"><option value="">Select</option></select></div>
+  </div>
+
+  <div class="row">
+    <div><label>Birth Date *</label><input formControlName="birthDate" type="date"></div>
+    <div><label>Birth Place *</label><input formControlName="birthPlace" type="text"></div>
+  </div>
+
+  <div class="row">
+    <div><label>Age *</label><input formControlName="age" type="number"></div>
+    <div><label>TIN *</label><input formControlName="tin" type="text"></div>
+  </div>
+
+  <label>Philippine Address</label>
+  <input formControlName="address" type="text">
+
+  <div class="row">
+    <div><label>Home Number</label><input formControlName="homePhone" placeholder="+63" type="text"></div>
+    <div><label>Fax Number</label><input formControlName="fax" placeholder="+63" type="text"></div>
+  </div>
+
+  <div class="row">
+    <div><label>Office Number</label><input formControlName="officePhone" placeholder="+63" type="text"></div>
+    <div><label>Mobile Number *</label><input formControlName="mobile" placeholder="+63" type="text"></div>
+  </div>
+
+  <label>Email Address *</label>
+  <input formControlName="email" type="email">
+</div>

@@ -9,22 +9,17 @@
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 40px calc(135px * 1.33);
 }
 
 @media (max-width: 1440px) {
-  .container {
-    padding: 40px 135px;
-  }
+
 }
 
 @media (max-width: 768px) {
   .container {
     gap: 0rem;
-    padding: 20px;
   }
   app-plan-selection {
     order: -1;
-    padding: 20px;
   }
 }

@@ -46,3 +46,21 @@ html {
 body {
   margin: 0 auto;
 }
+
+.container {
+  padding: 40px calc(70px * 1.33);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    padding: 40px 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+

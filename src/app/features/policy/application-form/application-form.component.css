@@ -1,3 +1,7 @@
+:host {
+  flex: 1;
+  width: 100%;
+}
 p {
   height: 200vh;
 }

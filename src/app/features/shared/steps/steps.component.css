@@ -1,6 +1,6 @@
 .stepper {
   display: flex;
-  padding: 2rem;
+  padding: 2rem 10rem;
 }
 
 .step {
@@ -54,6 +54,12 @@
 
 .label {
   font-family: 'Work Sans', sans-serif;
+}
+
+@media (max-width: 1440px) {
+  .stepper {
+    padding: 2rem 8rem;
+  }
 }
 
 @media (max-width: 768px) {
