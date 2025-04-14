@@ -1,11 +1,15 @@
+:host {
+  flex: 1;
+}
+
 .tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-  background: #f7f7f7;;
-  overflow: hidden;
-  border-radius: 6px;
-  padding: 7px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+    background: #f7f7f7;;
+    overflow: hidden;
+    border-radius: 6px;
+    padding: 7px;
 }
 
 .tab {
@@ -85,5 +89,11 @@
   to {
     transform: translateX(0%);
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 20px;
   }
 }

@@ -1,11 +1,30 @@
 :host {
-  display: inline-block;
-  padding: 0 180px;
+  padding: 50px 180px;
   width: 100%;
 }
 
+.container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 40px calc(135px * 1.33);
+}
+
+@media (max-width: 1440px) {
+  .container {
+    padding: 40px 135px;
+  }
+}
+
 @media (max-width: 768px) {
-  :host {
-    padding: 0 20px;
+  .container {
+    gap: 0rem;
+    padding: 20px;
+  }
+  app-plan-selection {
+    order: -1;
+    padding: 20px;
   }
 }

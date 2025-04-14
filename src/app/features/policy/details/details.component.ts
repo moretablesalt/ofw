@@ -3,6 +3,7 @@ import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { PRODUCTS } from '../../../data/product-data';
+import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 
 interface Coverage {
   coverage: string;
@@ -28,10 +29,10 @@ export class DetailsComponent implements OnInit {
   private stepsService = inject(StepsService);
   private router = inject(Router);
   public productService = inject(ProductService);
+  public insuranceEnvironmentService = inject(InsuranceEnvironmentService);
 
   products = PRODUCTS;
 
-  selectedTab: 'sea' | 'land' = 'sea';
   public selectedProduct: Product | undefined;
 
   ngOnInit(): void {
@@ -39,11 +40,11 @@ export class DetailsComponent implements OnInit {
     this.selectedProduct = this.products.find(p => p.id === this.productService.getProductId())
   }
 
-  selectTab(tab: 'sea' | 'land') {
-    this.selectedTab = tab;
-  }
-
   continue() {
     this.router.navigate(['/policy/application-form']);
+  }
+
+  setEnvironment(type: 'sea' | 'land') {
+    this.insuranceEnvironmentService.setEnvironment(type);
   }
 }

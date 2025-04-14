@@ -1,0 +1,72 @@
+.right-panel {
+  width: 350px;
+}
+
+.insurance-box {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.insurance-box h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.insurance-box p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.radio-group label {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.continue-btn {
+  background-color: #159C75;
+  color: white;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.change-btn {
+  background: transparent;
+  border: 1px solid #159C75;
+  color: #159C75;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Work Sans', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .right-panel {
+    width: 100%;
+  }
+}

@@ -1,19 +1,19 @@
 <div class="tabs">
   <button
     class="tab"
-    [class.active]="selectedTab === 'sea'"
-    (click)="selectTab('sea')">
+    [class.active]="insuranceEnvironmentService.environment() === 'sea'"
+    (click)="setEnvironment('sea')">
     Sea based
   </button>
   <button
     class="tab"
-    [class.active]="selectedTab === 'land'"
-    (click)="selectTab('land')">
+    [class.active]="insuranceEnvironmentService.environment() === 'land'"
+    (click)="setEnvironment('land')">
     Land based
   </button>
 </div>
 
-@if (selectedTab === 'sea') {
+@if (insuranceEnvironmentService.environment() === 'sea') {
   <div class="tab-content">
     <table class="coverage-table">
       <thead>
@@ -34,7 +34,7 @@
   </div>
 }
 
-@if (selectedTab === 'land') {
+@if (insuranceEnvironmentService.environment() === 'land') {
   <div class="tab-content">
     <table class="coverage-table">
       <thead>

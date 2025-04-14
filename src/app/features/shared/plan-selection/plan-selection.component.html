@@ -1,0 +1,25 @@
+<div class="right-panel">
+  <div class="insurance-box">
+    <h2>Agency Hired OFW</h2>
+    <p>A comprehensive insurance program designed to protect our modern day heroes: The OFW.</p>
+
+    <div class="radio-group">
+      <label><input
+        type="radio"
+        name="environment"
+        value="sea"
+        [checked]="insuranceEnvironmentService.environment() === 'sea'"
+        (change)="onSelect('sea')"/> Sea Based</label>
+      <label><input
+        type="radio"
+        name="environment"
+        value="land"
+        [checked]="insuranceEnvironmentService.environment() === 'land'"
+        (change)="onSelect('land')"/> Land Based</label>
+
+    </div>
+
+    <button class="continue-btn">Continue</button>
+    <button class="change-btn">Change Plan</button>
+  </div>
+</div>
