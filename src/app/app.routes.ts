@@ -31,11 +31,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/policy/review/review.component').then(m => m.ReviewComponent),
         title: 'Application Form',
       },
-      {
-        path: 'confirmation',
-        loadComponent: () => import('./features/policy/confirmation/confirmation.component').then(m => m.ConfirmationComponent),
-        title: 'Application Form',
-      }
     ]
+  },
+  {
+    path: 'confirmation',
+    loadComponent: () => import('./features/confirmation/confirmation.component').then(m => m.ConfirmationComponent),
+    title: 'Confirmation',
   }
 ];

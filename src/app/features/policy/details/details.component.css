@@ -60,6 +60,7 @@
 
 .button-container {
   text-align: center;
+  width: 100%;
 }
 
 .continue {
@@ -70,6 +71,7 @@
   font-weight: 600;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
 }
 
 .tab-content {

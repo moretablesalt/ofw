@@ -40,6 +40,22 @@
   color: #333;
 }
 
+.button-container {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.continue {
+  background-color: #219D69;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
 input[type="checkbox"] {
   accent-color: #219D69; /* change to any color you like */
 }

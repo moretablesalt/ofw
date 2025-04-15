@@ -59,7 +59,28 @@
   <div class="btn-container">
     <button class="edit-btn" (click)="goBack()">Edit</button>
   </div>
-  <div class="btn-container">
-    <button class="edit-btn" (click)="continue()">Continue</button>
+
+
+  <div class="card">
+    <h2>Select Payment</h2>
+    <p class="subtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+
+    <div class="payment-method">
+      <h4>Credit Card</h4>
+      <label class="payment-option">
+        <input type="radio" name="payment" />
+        <div class="card-icons">
+          <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" />
+          <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" />
+          <img src="https://img.icons8.com/color/48/jcb.png" alt="JCB" />
+        </div>
+      </label>
+    </div>
+
+    <div class="notice">
+      <strong>Notice:</strong> You will be automatically redirected to a secure third party website to process the payment
+    </div>
+
+    <button class="purchase-btn disabled" (click)="continue()">Purchase Policy</button>
   </div>
 </div>

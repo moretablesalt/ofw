@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StepsService } from '../../shared/steps/steps.service';
+import { StepsService } from '../shared/steps/steps.service';
 import { Router } from '@angular/router';
 
 @Component({

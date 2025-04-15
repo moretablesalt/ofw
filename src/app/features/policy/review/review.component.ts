@@ -27,7 +27,7 @@ export class ReviewComponent implements OnInit {
   }
 
   continue() {
-    this.router.navigate(['/policy/confirmation']);
+    this.router.navigate(['/confirmation']);
   }
 
   goBack(): void {
