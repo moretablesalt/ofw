@@ -1,21 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../shared/steps/steps.service';
 import { Router } from '@angular/router';
+import { StepsComponent } from '../shared/steps/steps.component';
+import { ApplicationFormStorageService } from '../../services/application-form-storage.service';
 
 @Component({
   selector: 'app-confirmation',
-  imports: [],
+  imports: [
+    StepsComponent
+  ],
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.css'
 })
 export class ConfirmationComponent implements OnInit {
-  constructor(private stepservice: StepsService, private router: Router) {}
+
+  private stepsService = inject(StepsService);
+  private router = inject(Router);
+  private applicationFormStorageService = inject(ApplicationFormStorageService);
 
   ngOnInit(): void {
-    this.stepservice.setStep(3);
+    this.stepsService.setStep(3);
   }
 
-  continue() {
+  backToHome() {
+    this.applicationFormStorageService.clear();
     this.router.navigate(['/']);
   }
 }

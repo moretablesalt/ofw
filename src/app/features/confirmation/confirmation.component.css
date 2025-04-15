@@ -1,3 +1,58 @@
-p {
-  height: 200vh;
+:host {
+
+}
+section {
+  text-align: center;
+  max-width: 400px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+  margin: 0 auto;
+  background-color: #ffffff;
+  flex-direction: column;
+}
+
+.icon-circle {
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  padding: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.icon-circle img {
+  width: 64px;
+  height: 64px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtext {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 90%;
+}
+
+button:hover {
+  background-color: #059669;
 }
