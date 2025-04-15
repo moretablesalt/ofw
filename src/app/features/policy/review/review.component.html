@@ -54,11 +54,13 @@
       <div class="pair"><div class="label">End Date:</div><div class="value">{{ formData?.work?.endDate | date: 'longDate' }}</div></div>
       <div class="pair"><div class="label">Period of Coverage:</div><div class="value">{{ formData?.work?.months }} months</div></div>
     </div>
+    <hr>
+    <div class="btn-container">
+      <button class="edit-btn" (click)="goBack()">Edit</button>
+    </div>
   </section>
 
-  <div class="btn-container">
-    <button class="edit-btn" (click)="goBack()">Edit</button>
-  </div>
+
 
 
   <div class="card">
