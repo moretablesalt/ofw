@@ -1,0 +1,95 @@
+<h3><strong>Work</strong></h3>
+<form [formGroup]="workForm" nz-form nzLayout="vertical">
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true" nzFor="companyName">Company Name</nz-form-label>
+    <nz-form-control>
+      <input nz-input id="companyName" formControlName="companyName" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-row [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="address">Address</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="address" formControlName="address" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="country">Country</nz-form-label>
+        <nz-form-control>
+          <nz-select id="country" formControlName="country">
+            <nz-option *ngFor="let c of countries" [nzValue]="c" [nzLabel]="c"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+  <nz-row [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="industry">Industry</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="industry" formControlName="industry" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="vesselName">Vessel Name</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="vesselName" formControlName="vesselName" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true" nzFor="designation">Designation</nz-form-label>
+    <nz-form-control>
+      <input nz-input id="designation" formControlName="designation" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-row [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="startDate">Start Date</nz-form-label>
+        <nz-form-control>
+          <nz-date-picker
+            formControlName="startDate"
+            [nzDisabledDate]="disabledStartDate"
+            nzFormat="yyyy-MM-dd"
+            nzPlaceHolder="Start"
+            (nzOnOpenChange)="handleStartOpenChange($event)"
+          ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="endDate">End Date</nz-form-label>
+        <nz-form-control>
+          <nz-date-picker
+            #endDatePicker
+            formControlName="endDate"
+            [nzDisabledDate]="disabledEndDate"
+            nzFormat="yyyy-MM-dd"
+            nzPlaceHolder="End"
+            (nzOnOpenChange)="handleEndOpenChange($event)"
+          ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true" nzFor="months">Period Coverages (Months)</nz-form-label>
+    <nz-form-control [nzErrorTip]="'The minimum amount for this field is 1.'">
+      <input nz-input type="number" min="1" id="months" formControlName="months" />
+    </nz-form-control>
+  </nz-form-item>
+</form>
