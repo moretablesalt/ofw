@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { PassportComponent } from './passport/passport.component';
 import { WorkComponent } from './work/work.component';
+import { Subject, takeUntil } from 'rxjs';
+import { ApplicationFormStorageService } from '../../../services/application-form-storage.service';
 
 @Component({
   selector: 'app-application-form',
@@ -22,8 +24,60 @@ export class ApplicationFormComponent implements OnInit {
   private stepsService = inject(StepsService);
   private router = inject(Router);
   form!: FormGroup;
+  private destroy$ = new Subject<void>();
+  private applicationFormStorageSerice = inject(ApplicationFormStorageService)
 
   constructor(private fb: FormBuilder) {
+    this.buildForm();
+
+    const appForm = sessionStorage.getItem('appForm');
+    if (appForm) {
+      this.form.patchValue(JSON.parse(appForm));
+    }
+  }
+
+  ngOnInit() {
+    this.stepsService.setStep(1);
+
+    this.form.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(value  => {
+        sessionStorage.setItem('appForm', JSON.stringify(value));
+      })
+
+    const saved = this.applicationFormStorageSerice.getAppFormData();
+    if (saved) {
+      this.form.patchValue(saved);
+    }
+
+    this.form.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(value => {
+        this.applicationFormStorageSerice.setAppFormData(value);
+      });
+
+  }
+
+  continue() {
+    this.router.navigate(['/policy/review']);
+  }
+
+  get personalFormGroup(): FormGroup {
+    // Simple assertion - assumes it always exists and is a FormGroup
+    return this.form.get('personal') as FormGroup;
+  }
+
+  get passportFormGroup(): FormGroup {
+    // Simple assertion - assumes it always exists and is a FormGroup
+    return this.form.get('passport') as FormGroup;
+  }
+
+  get workFormGroup(): FormGroup {
+    // Simple assertion - assumes it always exists and is a FormGroup
+    return this.form.get('work') as FormGroup;
+  }
+
+  buildForm() {
     this.form = this.fb.group({
       personal: this.fb.group({
         lastName: ['', Validators.required],
@@ -36,9 +90,6 @@ export class ApplicationFormComponent implements OnInit {
         age: [''],
         tin: [''],
         address: [''],
-        homePhone: [''],
-        fax: [''],
-        officePhone: [''],
         mobile: [''],
         email: [''],
       }),
@@ -71,40 +122,5 @@ export class ApplicationFormComponent implements OnInit {
         months: [null, [Validators.required]],
       })
     });
-  }
-
-  ngOnInit() {
-    this.stepsService.setStep(1);
-
-    this.form.get('personal')?.valueChanges.subscribe(value => {
-      console.log('Personal form changed:', value);
-    });
-
-    this.form.get('passport')?.valueChanges.subscribe(value => {
-      console.log('Passport form changed:', value);
-    });
-
-    this.form.get('work')?.valueChanges.subscribe(value => {
-      console.log('Work form changed:', value);
-    });
-  }
-
-  continue() {
-    this.router.navigate(['/policy/review']);
-  }
-
-  get personalFormGroup(): FormGroup {
-    // Simple assertion - assumes it always exists and is a FormGroup
-    return this.form.get('personal') as FormGroup;
-  }
-
-  get passportFormGroup(): FormGroup {
-    // Simple assertion - assumes it always exists and is a FormGroup
-    return this.form.get('passport') as FormGroup;
-  }
-
-  get workFormGroup(): FormGroup {
-    // Simple assertion - assumes it always exists and is a FormGroup
-    return this.form.get('work') as FormGroup;
   }
 }

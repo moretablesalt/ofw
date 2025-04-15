@@ -40,6 +40,9 @@
   color: #333;
 }
 
+input[type="checkbox"] {
+  accent-color: #219D69; /* change to any color you like */
+}
 
 @media (max-width: 768px) {
   .container {

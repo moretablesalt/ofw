@@ -105,36 +105,8 @@
     </nz-form-control>
   </nz-form-item>
 
-  <!-- Home & Fax -->
+  <!-- Mobile & Email -->
   <nz-row class="form-row" [nzGutter]="16">
-    <nz-col [nzXs]="24" [nzMd]="12">
-      <nz-form-item>
-        <nz-form-label nzFor="homePhone">Home Number</nz-form-label>
-        <nz-form-control>
-          <input id="homePhone" nz-input formControlName="homePhone" placeholder="+63" />
-        </nz-form-control>
-      </nz-form-item>
-    </nz-col>
-    <nz-col [nzXs]="24" [nzMd]="12">
-      <nz-form-item>
-        <nz-form-label nzFor="fax">Fax Number</nz-form-label>
-        <nz-form-control>
-          <input id="fax" nz-input formControlName="fax" placeholder="+63" />
-        </nz-form-control>
-      </nz-form-item>
-    </nz-col>
-  </nz-row>
-
-  <!-- Office & Mobile -->
-  <nz-row class="form-row" [nzGutter]="16">
-    <nz-col [nzXs]="24" [nzMd]="12">
-      <nz-form-item>
-        <nz-form-label nzFor="officePhone">Office Number</nz-form-label>
-        <nz-form-control>
-          <input id="officePhone" nz-input formControlName="officePhone" placeholder="+63" />
-        </nz-form-control>
-      </nz-form-item>
-    </nz-col>
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="mobile">Mobile Number</nz-form-label>
@@ -143,14 +115,13 @@
         </nz-form-control>
       </nz-form-item>
     </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item class="form-row">
+        <nz-form-label [nzRequired]="true" nzFor="email">Email Address</nz-form-label>
+        <nz-form-control>
+          <input id="email" nz-input formControlName="email" type="email" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
   </nz-row>
-
-  <!-- Email -->
-  <nz-form-item class="form-row">
-    <nz-form-label [nzRequired]="true" nzFor="email">Email Address</nz-form-label>
-    <nz-form-control>
-      <input id="email" nz-input formControlName="email" type="email" />
-    </nz-form-control>
-  </nz-form-item>
-
 </form>
