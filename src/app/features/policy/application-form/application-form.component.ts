@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { PassportComponent } from './passport/passport.component';
 import { WorkComponent } from './work/work.component';

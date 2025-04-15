@@ -1,22 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
+import { ApplicationFormStorageService } from '../../../services/application-form-storage.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-review',
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
 })
-export class ReviewComponent implements OnInit{
+export class ReviewComponent implements OnInit {
 
-  constructor(private stepservice: StepsService, private router: Router) {}
+  private stepsService = inject(StepsService);
+  private router = inject(Router);
+  private storage = inject(ApplicationFormStorageService);
+
+  formData: any;
 
   ngOnInit(): void {
-    this.stepservice.setStep(2);
+    this.stepsService.setStep(2);
+    this.formData = this.storage.getAppFormData();
+
   }
 
   continue() {
     this.router.navigate(['/policy/confirmation']);
   }
+
+  goBack(): void {
+    this.router.navigate(['/policy/application-form']);
+  }
+
 }

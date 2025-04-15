@@ -5,11 +5,11 @@
 
     <h3>Agency Details</h3>
     <div class="flex-tab">
-      <div class="pair"><div class="label">Agency Name:</div><div class="value">Top Agency</div></div>
-      <div class="pair"><div class="label">Email Address:</div><div class="value">topagencymail.com</div></div>
-      <div class="pair"><div class="label">Telephone Number:</div><div class="value">0444-033-001</div></div>
-      <div class="pair"><div class="label">Mobile Number:</div><div class="value">(+63) 957 721 9921</div></div>
-      <div class="pair"><div class="label">Contact Person:</div><div class="value">Sells Gonzales</div></div>
+      <div class="pair"><div class="label">Agency Name:</div><div class="value">{{ formData?.agency?.agencyName }}</div></div>
+      <div class="pair"><div class="label">Email Address:</div><div class="value">{{ formData?.agency?.email }}</div></div>
+      <div class="pair"><div class="label">Telephone Number:</div><div class="value">{{ formData?.agency?.telephonePrefix }} {{ formData?.agency?.telephoneNumber }}</div></div>
+      <div class="pair"><div class="label">Mobile Number:</div><div class="value">{{ formData?.agency?.mobilePrefix }} {{ formData?.agency?.mobileNumber }}</div></div>
+      <div class="pair"><div class="label">Contact Person:</div><div class="value">{{ formData?.agency?.contactPerson }}</div></div>
     </div>
   </section>
 
@@ -19,43 +19,47 @@
 
     <h3>Personal Data</h3>
     <div class="flex-tab">
-      <div class="pair"><div class="label">Full Name:</div><div class="value">Mr. John C. Doe</div></div>
-      <div class="pair"><div class="label">Civil Status:</div><div class="value">Single</div></div>
-      <div class="pair"><div class="label">Birth Date:</div><div class="value">04/15/1989</div></div>
-      <div class="pair"><div class="label">Birth Place:</div><div class="value">Molo, Iloilo City, Iloilo asd aada a sda dasd</div></div>
-      <div class="pair"><div class="label">Age:</div><div class="value">36</div></div>
-      <div class="pair"><div class="label">TIN Number:</div><div class="value">385-223-612-000</div></div>
-      <div class="pair"><div class="label">Philippine Address:</div><div class="value">255 R.Mapa St, Mandurriao, Iloilo City, Iloilo asda sda adasdasd</div></div>
-      <div class="pair"><div class="label">Home Number:</div><div class="value">(+63) 957 721 9921</div></div>
-      <div class="pair"><div class="label">Fax Number:</div><div class="value">(+63) 957 721 9921</div></div>
-      <div class="pair"><div class="label">Office Number:</div><div class="value">(+63) 957 721 9921</div></div>
-      <div class="pair"><div class="label">Mobile Number:</div><div class="value">(+63) 957 721 9921</div></div>
-      <div class="pair"><div class="label">Email Address:</div><div class="value">johndoegmail.com</div></div>
+      <div class="pair"><div class="label">Full Name:</div>
+        <div class="value">{{ formData?.personal?.title }} {{ formData?.personal?.firstName }} {{ formData?.personal?.middleInitial }} {{ formData?.personal?.lastName }}</div>
+      </div>
+      <div class="pair"><div class="label">Civil Status:</div><div class="value">{{ formData?.personal?.civilStatus }}</div></div>
+      <div class="pair"><div class="label">Birth Date:</div><div class="value">{{ formData?.personal?.birthDate | date: 'longDate' }}</div></div>
+      <div class="pair"><div class="label">Birth Place:</div><div class="value">{{ formData?.personal?.birthPlace }}</div></div>
+      <div class="pair"><div class="label">Age:</div><div class="value">{{ formData?.personal?.age }}</div></div>
+      <div class="pair"><div class="label">TIN Number:</div><div class="value">{{ formData?.personal?.tin }}</div></div>
+      <div class="pair"><div class="label">Philippine Address:</div><div class="value">{{ formData?.personal?.address }}</div></div>
+      <div class="pair"><div class="label">Mobile Number:</div><div class="value">{{ formData?.personal?.mobile }}</div></div>
+      <div class="pair"><div class="label">Email Address:</div><div class="value">{{ formData?.personal?.email }}</div></div>
     </div>
 
     <h3>Passport Details</h3>
     <div class="flex-tab">
-      <div class="pair"><div class="label">Full Name:</div><div class="value">Mr. John C. Doe</div></div>
-      <div class="pair"><div class="label">Passport No.:</div><div class="value">P235681984B</div></div>
-      <div class="pair"><div class="label">Issued On:</div><div class="value">04/15/2020</div></div>
-      <div class="pair"><div class="label">Issued At:</div><div class="value">Molo, Iloilo City, Iloilo</div></div>
+      <div class="pair"><div class="label">Full Name:</div>
+        <div class="value">{{ formData?.passport?.firstName }} {{ formData?.passport?.middleName }} {{ formData?.passport?.lastName }}</div>
+      </div>
+      <div class="pair"><div class="label">Passport No.:</div><div class="value">{{ formData?.passport?.passportNo }}</div></div>
+      <div class="pair"><div class="label">Issued On:</div><div class="value">{{ formData?.passport?.issuedOn | date: 'longDate' }}</div></div>
+      <div class="pair"><div class="label">Issued At:</div><div class="value">{{ formData?.passport?.issuedAt }}</div></div>
     </div>
 
     <h3>Work</h3>
     <div class="flex-tab">
-      <div class="pair"><div class="label">Company Name:</div><div class="value">OceanBridge Logistics, Inc.</div></div>
-      <div class="pair"><div class="label">Address:</div><div class="value">48 Wharf Road, Port Botany, Sydney</div></div>
-      <div class="pair"><div class="label">Country:</div><div class="value">Australia</div></div>
-      <div class="pair"><div class="label">Industry:</div><div class="value">Cargo Transport</div></div>
-      <div class="pair"><div class="label">Vessel Name:</div><div class="value">MV Tasman Spirit</div></div>
-      <div class="pair"><div class="label">Designation:</div><div class="value">Able Seaman</div></div>
-      <div class="pair"><div class="label">Monthly Compensation:</div><div class="value">3,200</div></div>
-      <div class="pair"><div class="label">Currency:</div><div class="value">AUD</div></div>
-      <div class="pair"><div class="label">Period of Coverage:</div><div class="value">2 years and 6 months</div></div>
+      <div class="pair"><div class="label">Company Name:</div><div class="value">{{ formData?.work?.companyName }}</div></div>
+      <div class="pair"><div class="label">Address:</div><div class="value">{{ formData?.work?.address }}</div></div>
+      <div class="pair"><div class="label">Country:</div><div class="value">{{ formData?.work?.country }}</div></div>
+      <div class="pair"><div class="label">Industry:</div><div class="value">{{ formData?.work?.industry }}</div></div>
+      <div class="pair"><div class="label">Vessel Name:</div><div class="value">{{ formData?.work?.vesselName }}</div></div>
+      <div class="pair"><div class="label">Designation:</div><div class="value">{{ formData?.work?.designation }}</div></div>
+      <div class="pair"><div class="label">Start Date:</div><div class="value">{{ formData?.work?.startDate | date: 'longDate' }}</div></div>
+      <div class="pair"><div class="label">End Date:</div><div class="value">{{ formData?.work?.endDate | date: 'longDate' }}</div></div>
+      <div class="pair"><div class="label">Period of Coverage:</div><div class="value">{{ formData?.work?.months }} months</div></div>
     </div>
   </section>
 
   <div class="btn-container">
-    <button class="edit-btn">Edit</button>
+    <button class="edit-btn" (click)="goBack()">Edit</button>
+  </div>
+  <div class="btn-container">
+    <button class="edit-btn" (click)="continue()">Continue</button>
   </div>
 </div>
