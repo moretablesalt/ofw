@@ -135,6 +135,7 @@ export class ApplicationFormComponent implements OnInit {
         industry: ['', Validators.required],
         vesselName: ['', Validators.required],
         designation: ['', Validators.required],
+        contactNo: ['', Validators.required],
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
         months: [null, [Validators.required]],

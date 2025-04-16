@@ -47,12 +47,26 @@
     </nz-col>
   </nz-row>
 
-  <nz-form-item>
-    <nz-form-label [nzRequired]="true" nzFor="designation">Designation</nz-form-label>
-    <nz-form-control>
-      <input nz-input id="designation" formControlName="designation" />
-    </nz-form-control>
-  </nz-form-item>
+  <nz-row [nzGutter]="16">
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="designation">Designation</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="designation" formControlName="designation" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label [nzRequired]="true" nzFor="contactNo">Contact No.</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="contactNo" formControlName="contactNo" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+
 
   <nz-row [nzGutter]="16">
     <nz-col [nzXs]="24" [nzMd]="12">
