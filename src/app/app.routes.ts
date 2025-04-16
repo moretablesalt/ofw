@@ -3,6 +3,12 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+    title: 'Home'
+  },
+  {
+    path: 'home',
     loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
     title: 'Home'
   },
@@ -37,5 +43,20 @@ export const routes: Routes = [
     path: 'confirmation',
     loadComponent: () => import('./features/confirmation/confirmation.component').then(m => m.ConfirmationComponent),
     title: 'Confirmation',
+  },
+  {
+    path: 'faqs',
+    loadComponent: () => import('./features/static/faqs/faqs.component').then(m => m.FaqsComponent),
+    title: 'FAQs',
+  },
+  {
+    path: 'contact-us',
+    loadComponent: () => import('./features/static/contact-us/contact-us.component').then(m => m.ContactUsComponent),
+    title: 'Contact Us',
+  },
+  {
+    path: 'claims',
+    loadComponent: () => import('./features/static/claims/claims.component').then(m => m.ClaimsComponent),
+    title: 'Claims',
   }
 ];
