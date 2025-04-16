@@ -24,16 +24,16 @@
   <div class="mobile-menu">
     <ul class="mobile-menu-list">
       <li routerLinkActive="active">
-        <a routerLink="/home" >Home</a>
+        <a routerLink="/home" (click)="closeMenu()">Home</a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="/faqs" >FAQS</a>
+        <a routerLink="/faqs" (click)="closeMenu()">FAQS</a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="/contact-us" >Contact Us</a>
+        <a routerLink="/contact-us" (click)="closeMenu()">Contact Us</a>
       </li>
       <li class="cta">
-        <a routerLink="/claims" >Claims</a>
+        <a routerLink="/claims" (click)="closeMenu()">Claims</a>
       </li>
     </ul>
   </div>
