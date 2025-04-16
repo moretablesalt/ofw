@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {StepsService} from './steps.service';
+import { Component, inject } from '@angular/core';
+import { StepsService } from './steps.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-steps',
@@ -9,8 +10,21 @@ import {StepsService} from './steps.service';
 })
 export class StepsComponent {
 
+  private router = inject(Router)
+
   constructor(public stepsService: StepsService) {}
 
   steps = ['Coverage Information', 'Application Form', 'Review and Payment', 'Confirmation'];
 
+    goToStep(i: number) {
+      let route = '';
+      if (i === 0) {
+        route = '/policy/details';
+      } else if (i === 1) {
+        route = '/policy/application-form';
+      } else if (i === 2) {
+        route = '/policy/review';
+      }
+      this.router.navigate([route]);
+    }
 }

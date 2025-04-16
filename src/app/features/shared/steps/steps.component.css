@@ -1,6 +1,6 @@
 .stepper {
   display: flex;
-  padding: 2rem 10rem;
+  padding: 3rem 10rem 1rem 10rem
 }
 
 .step {
@@ -22,6 +22,11 @@
   height: 2px;
   background-color: #e0e0e0;
   z-index: -1;
+}
+
+.circle .completed.clickable {
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 .completed.step:not(:last-child)::after {
@@ -58,7 +63,7 @@
 
 @media (max-width: 1440px) {
   .stepper {
-    padding: 2rem 8rem;
+    padding: 2rem 8rem .5rem 8rem;
   }
 }
 

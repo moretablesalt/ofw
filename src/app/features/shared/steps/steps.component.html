@@ -1,9 +1,16 @@
 <div class="stepper">
   @for (step of steps; track step; let i = $index) {
-    <div class="step" [class.active]="i === stepsService.step()" [class.completed]="i < stepsService.step()">
+    <div class="step"
+         [class.active]="i === stepsService.step()"
+         [class.completed]="i < stepsService.step()">
       <span class="circle">
         @if (i < stepsService.step()) {
-          <ng-container><img src="images/steps/check.svg" alt=""></ng-container>
+          <ng-container><img
+            [class.completed]="i < stepsService.step()"
+            [class.clickable]="i < stepsService.step() && stepsService.step() < 3"
+            (click)="i < stepsService.step() && stepsService.step() < 3 && goToStep(i)"
+            src="images/steps/check.svg" alt="">
+          </ng-container>
         }
         @if (i >= stepsService.step()) {
           <ng-container>{{ i + 1 }}</ng-container>
