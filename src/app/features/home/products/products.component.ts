@@ -15,7 +15,11 @@ export class ProductsComponent {
   private productService = inject(ProductService);
 
   continue(productId: string) {
-    this.productService.setProductId(productId)
-    this.router.navigate(['/policy']);
+    this.productService.setProductId(productId);
+    if (productId === 'C') {
+      this.router.navigate(['/civil-status']);
+    } else {
+      this.router.navigate(['/policy']);
+    }
   }
 }
