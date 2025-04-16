@@ -1,10 +1,18 @@
 <nav>
   <img src="images/navbar/logo.png" alt="Logo">
   <ul>
-    <li>Home</li>
-    <li>FAQS</li>
-    <li>Contact Us</li>
-    <li class="cta">Claims</li>
+    <li routerLinkActive="active">
+      <a routerLink="/home" >Home</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/faqs" >FAQS</a>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLink="/contact-us" >Contact Us</a>
+    </li>
+    <li class="cta">
+      <a routerLink="/claims" >Claims</a>
+    </li>
   </ul>
   <span class="hamburger" aria-label="Toggle menu" (click)="toggleMenu()">
     {{ isMenuOpen ? '✕' : '☰'}}
@@ -15,10 +23,18 @@
 <nav class="sidebar" [class.open]="isMenuOpen" id="sidebar">
   <div class="mobile-menu">
     <ul class="mobile-menu-list">
-      <li>Home</li>
-      <li>FAQS</li>
-      <li>Contact Us</li>
-      <li class="cta">Claims</li>
+      <li routerLinkActive="active">
+        <a routerLink="/home" >Home</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/faqs" >FAQS</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/contact-us" >Contact Us</a>
+      </li>
+      <li class="cta">
+        <a routerLink="/claims" >Claims</a>
+      </li>
     </ul>
   </div>
 </nav>
