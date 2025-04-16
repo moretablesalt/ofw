@@ -3,6 +3,7 @@ import { InsuranceEnvironmentService } from '../../../services/insurance-environ
 import { PRODUCTS } from '../../../data/product-data';
 import { Product } from '../../../models/product.model';
 import { ProductService } from '../../../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plan-selection',
@@ -14,6 +15,7 @@ export class PlanSelectionComponent implements OnInit{
 
   public insuranceEnvironmentService = inject(InsuranceEnvironmentService);
   public productService = inject(ProductService);
+  private router = inject(Router);
 
   products = PRODUCTS;
 
@@ -25,5 +27,13 @@ export class PlanSelectionComponent implements OnInit{
 
   onSelect(env: 'sea' | 'land') {
     this.insuranceEnvironmentService.setEnvironment(env);
+  }
+
+  continue() {
+    this.router.navigate(['/policy/application-form']);
+  }
+
+  changePlan() {
+    this.router.navigate(['']);
   }
 }
