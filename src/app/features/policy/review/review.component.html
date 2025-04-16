@@ -1,17 +1,19 @@
 <div class="review-container">
-  <section class="section">
-    <h2>Agency</h2>
-    <p class="subtext">Details of the agency provided by the policyholder</p>
+  @if (false) {
+    <section class="section">
+      <h2>Agency</h2>
+      <p class="subtext">Details of the agency provided by the policyholder</p>
 
-    <h3>Agency Details</h3>
-    <div class="flex-tab">
-      <div class="pair"><div class="label">Agency Name:</div><div class="value">{{ formData?.agency?.agencyName }}</div></div>
-      <div class="pair"><div class="label">Email Address:</div><div class="value">{{ formData?.agency?.email }}</div></div>
-      <div class="pair"><div class="label">Telephone Number:</div><div class="value">{{ formData?.agency?.telephonePrefix }} {{ formData?.agency?.telephoneNumber }}</div></div>
-      <div class="pair"><div class="label">Mobile Number:</div><div class="value">{{ formData?.agency?.mobilePrefix }} {{ formData?.agency?.mobileNumber }}</div></div>
-      <div class="pair"><div class="label">Contact Person:</div><div class="value">{{ formData?.agency?.contactPerson }}</div></div>
-    </div>
-  </section>
+      <h3>Agency Details</h3>
+      <div class="flex-tab">
+        <div class="pair"><div class="label">Agency Name:</div><div class="value">{{ formData?.agency?.agencyName }}</div></div>
+        <div class="pair"><div class="label">Email Address:</div><div class="value">{{ formData?.agency?.email }}</div></div>
+        <div class="pair"><div class="label">Telephone Number:</div><div class="value">{{ formData?.agency?.telephonePrefix }} {{ formData?.agency?.telephoneNumber }}</div></div>
+        <div class="pair"><div class="label">Mobile Number:</div><div class="value">{{ formData?.agency?.mobilePrefix }} {{ formData?.agency?.mobileNumber }}</div></div>
+        <div class="pair"><div class="label">Contact Person:</div><div class="value">{{ formData?.agency?.contactPerson }}</div></div>
+      </div>
+    </section>
+  }
 
   <section class="section">
     <h2>Policy Holder</h2>
