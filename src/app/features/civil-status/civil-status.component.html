@@ -1,0 +1,31 @@
+<div class="card">
+  <h3>What’s your civil status?</h3>
+  <p class="description">
+    This helps us choose the right package for you—<strong>Package 1</strong> suits married policyholders (spouse and children), and <strong>Package 2</strong> suits single, widowed and separated policyholders (parents and siblings/children).
+  </p>
+
+  <form class="radio-group">
+    <label class="radio-option">
+      <input type="radio" name="status" value="single" />
+      <span>Single</span>
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="status" value="married" checked />
+      <span>Married</span>
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="status" value="separated" />
+      <span>Separated</span>
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="status" value="widowed-with-children" />
+      <span>Widowed with Children</span>
+    </label>
+    <label class="radio-option">
+      <input type="radio" name="status" value="widowed-without-children" />
+      <span>Widowed without Children</span>
+    </label>
+  </form>
+
+  <button class="continue-btn" (click)="continue()">Continue</button>
+</div>

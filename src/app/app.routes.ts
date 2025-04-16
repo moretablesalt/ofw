@@ -13,6 +13,11 @@ export const routes: Routes = [
     title: 'Home'
   },
   {
+    path: 'civil-status',
+    loadComponent: () => import('./features/civil-status/civil-status.component').then(m => m.CivilStatusComponent),
+    title: 'Civil status',
+  },
+  {
     path: 'policy',
     loadComponent: () => import('./features/policy/policy.component').then(m => m.PolicyComponent),
     title: 'Policy',
