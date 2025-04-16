@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { PassportComponent } from './passport/passport.component';
 import { WorkComponent } from './work/work.component';
@@ -59,6 +59,24 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   continue() {
+
+    this.validateAllFormFields(this.form);
+
+    if (this.form.invalid) {
+      // Scroll to the first invalid field
+      setTimeout(() => {
+        const firstInvalid = document.querySelector(
+          '.ng-invalid:not(form)'
+        ) as HTMLElement;
+
+        if (firstInvalid) {
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          (firstInvalid as HTMLElement).focus?.();
+        }
+      }, 100);
+      return;
+    }
+
     this.router.navigate(['/policy/review']);
   }
 
@@ -81,25 +99,25 @@ export class ApplicationFormComponent implements OnInit {
     this.form = this.fb.group({
       personal: this.fb.group({
         lastName: ['', Validators.required],
-        firstName: [''],
-        middleInitial: [''],
-        title: [''],
-        civilStatus: [''],
-        birthDate: [''],
-        birthPlace: [''],
-        age: [''],
-        tin: [''],
-        address: [''],
-        mobile: [''],
-        email: [''],
+        firstName: ['', Validators.required],
+        middleInitial: [''], // optional
+        title: ['', Validators.required],
+        civilStatus: ['', Validators.required],
+        birthDate: ['', Validators.required],
+        birthPlace: ['', Validators.required],
+        age: ['', [Validators.required, Validators.min(1)]],
+        tin: ['', Validators.required],
+        address: ['', Validators.required],
+        mobile: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]]
       }),
       passport: this.fb.group({
-        lastName: [''],
-        firstName: [''],
+        lastName: ['', Validators.required],
+        firstName: ['', Validators.required],
         middleName: [''],
-        passportNo: [''],
-        issuedOn: [''],
-        issuedAt: ['']
+        passportNo: ['', Validators.required],
+        issuedOn: ['', Validators.required],
+        issuedAt: ['', Validators.required]
       }),
       agency: this.fb.group({
         agencyName: [''],
@@ -121,6 +139,17 @@ export class ApplicationFormComponent implements OnInit {
         endDate: ['', Validators.required],
         months: [null, [Validators.required]],
       })
+    });
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      if (control instanceof FormControl) {
+        control.markAsDirty();
+        control.updateValueAndValidity({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control); // 👈 Recursively validate nested groups
+      }
     });
   }
 }

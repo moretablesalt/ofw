@@ -5,7 +5,7 @@
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
         <nz-form-label [nzRequired]="true">Last Name</nz-form-label>
-        <nz-form-control nzErrorTip="poop">
+        <nz-form-control [nzErrorTip]="'Last name is required'">
           <input nz-input formControlName="lastName" />
         </nz-form-control>
       </nz-form-item>
@@ -13,7 +13,7 @@
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
         <nz-form-label [nzRequired]="true">First Name</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'First name is required'">
           <input nz-input formControlName="firstName" />
         </nz-form-control>
       </nz-form-item>
@@ -33,7 +33,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="title">Title</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Title is required'">
           <nz-select id="title" formControlName="title" nzPlaceHolder="Select">
             <nz-option nzValue="Mr." nzLabel="Mr."></nz-option>
             <nz-option nzValue="Ms." nzLabel="Ms."></nz-option>
@@ -45,7 +45,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="civilStatus">Civil Status</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Civil status is required'">
           <nz-select id="civilStatus" formControlName="civilStatus" nzPlaceHolder="Select">
             <nz-option nzValue="Single" nzLabel="Single"></nz-option>
             <nz-option nzValue="Married" nzLabel="Married"></nz-option>
@@ -62,7 +62,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true">Birth Date</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Birth date is required'">
           <nz-date-picker formControlName="birthDate"></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
@@ -70,7 +70,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="birthPlace">Birth Place</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Birth place is required'">
           <input id="birthPlace" nz-input formControlName="birthPlace" />
         </nz-form-control>
       </nz-form-item>
@@ -82,7 +82,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="age">Age</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Age is required'">
           <input id="age" nz-input type="number" formControlName="age" />
         </nz-form-control>
       </nz-form-item>
@@ -90,7 +90,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="tin">TIN</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'TIN is required'">
           <input id="tin" nz-input formControlName="tin" />
         </nz-form-control>
       </nz-form-item>
@@ -100,7 +100,7 @@
   <!-- Address -->
   <nz-form-item class="form-row">
     <nz-form-label [nzRequired]="true" nzFor="address">Philippine Address</nz-form-label>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="'Address is required'">
       <input id="address" nz-input formControlName="address" />
     </nz-form-control>
   </nz-form-item>
@@ -110,7 +110,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="mobile">Mobile Number</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Mobile number is required'">
           <input id="mobile" nz-input formControlName="mobile" placeholder="+63" />
         </nz-form-control>
       </nz-form-item>
@@ -118,7 +118,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item class="form-row">
         <nz-form-label [nzRequired]="true" nzFor="email">Email Address</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Valid email is required'">
           <input id="email" nz-input formControlName="email" type="email" />
         </nz-form-control>
       </nz-form-item>

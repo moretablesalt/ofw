@@ -5,7 +5,7 @@
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="lastName">Last Name</nz-form-label>
-        <nz-form-control nzErrorTip="poop">
+        <nz-form-control [nzErrorTip]="'Last name is required'">
           <input nz-input id="lastName" formControlName="lastName" />
         </nz-form-control>
       </nz-form-item>
@@ -13,8 +13,8 @@
 
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
-        <nz-form-label nzFor="firstName">First Name</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzRequired]="true" nzFor="firstName">First Name</nz-form-label>
+        <nz-form-control [nzErrorTip]="'First name is required'">
           <input nz-input id="firstName" formControlName="firstName" />
         </nz-form-control>
       </nz-form-item>
@@ -34,7 +34,7 @@
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="passportNo">Passport No.</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Passport number is required'">
           <input nz-input id="passportNo" formControlName="passportNo" />
         </nz-form-control>
       </nz-form-item>
@@ -43,7 +43,7 @@
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="issuedOn">Issued On</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Issue date is required'">
           <nz-date-picker id="issuedOn" formControlName="issuedOn"></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
@@ -52,7 +52,7 @@
     <nz-col [nzXs]="24" [nzMd]="8">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="issuedAt">Issued At</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Place of issue is required'">
           <input nz-input id="issuedAt" formControlName="issuedAt" />
         </nz-form-control>
       </nz-form-item>
