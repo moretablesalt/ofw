@@ -3,6 +3,7 @@ import { Product } from '../models/product.model';
 export const PRODUCTS: Product[] = [
   {
     id: 'A',
+    description: 'Agency-Hired Migrant Workers',
     seaCoverages: [
       { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 11,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
@@ -28,6 +29,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'B',
+    description: 'Rehires and Direct Hires Migrant Workers',
     seaCoverages: [
       { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 33,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
@@ -53,6 +55,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'C',
+    description: 'OWWA Family Shield',
     seaCoverages: [
       { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 55,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
