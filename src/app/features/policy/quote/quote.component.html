@@ -1,0 +1,39 @@
+  <section>
+    <form  [formGroup]="insuranceForm" (ngSubmit)="sayHello()" nz-form nzLayout="vertical">
+      <h2>Compulsory Insurance</h2>
+
+      <nz-form-item>
+        <nz-form-label nzFor="insuranceType">
+          <strong>Choose Your Insurance Type</strong>
+        </nz-form-label>
+        <nz-form-control>
+          <nz-radio-group formControlName="insuranceType">
+            <label nz-radio [nzValue]="'sea'">Sea Based</label>
+            <label nz-radio [nzValue]="'land'">Land Based</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <p><strong>Choose Coverage Dates</strong></p>
+
+      <nz-row class="form-row" [nzGutter]="16">
+        <nz-col [nzXs]="24" [nzMd]="12">
+          <nz-form-item>
+            <nz-form-label [nzRequired]="true">Start Date</nz-form-label>
+            <nz-form-control [nzErrorTip]="'Start date is required'">
+              <nz-date-picker formControlName="startDate"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+        <nz-col [nzXs]="24" [nzMd]="12">
+          <nz-form-item>
+            <nz-form-label [nzRequired]="true">End Date</nz-form-label>
+            <nz-form-control [nzErrorTip]="'Start date is required'">
+              <nz-date-picker formControlName="endDate"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+      <button type="submit" [disabled]="insuranceForm.invalid">Generate Quote</button>
+    </form>
+  </section>

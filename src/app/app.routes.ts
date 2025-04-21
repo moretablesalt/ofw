@@ -24,8 +24,13 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'details',
+        redirectTo: 'quote',
         pathMatch: 'full',
+      },
+      {
+        path: 'quote',
+        loadComponent: () => import('./features/policy/quote/quote.component').then(m => m.QuoteComponent),
+        title: 'Policy Details',
       },
       {
         path: 'details',

@@ -30,7 +30,7 @@ export class PlanSelectionComponent implements OnInit{
   }
 
   continue() {
-    this.router.navigate(['/policy/application-form']);
+    this.router.navigate(['/policy/details']);
   }
 
   changePlan() {
