@@ -19,10 +19,12 @@ export class StepsComponent {
     goToStep(i: number) {
       let route = '';
       if (i === 0) {
-        route = '/policy/details';
+        route = '/policy/quote';
       } else if (i === 1) {
-        route = '/policy/application-form';
+        route = '/policy/details';
       } else if (i === 2) {
+        route = '/policy/application-form';
+      } else if (i === 3) {
         route = '/policy/review';
       }
       this.router.navigate([route]);
