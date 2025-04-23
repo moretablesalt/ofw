@@ -36,7 +36,7 @@ export class DetailsComponent implements OnInit {
   public selectedProduct: Product | undefined;
 
   ngOnInit(): void {
-    this.stepsService.setStep(0);
+    this.stepsService.setStep(1);
     this.selectedProduct = this.products.find(p => p.id === this.productService.getProductId())
   }
 

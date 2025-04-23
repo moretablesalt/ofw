@@ -64,6 +64,15 @@
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
 }
+.dollar {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.amount {
+  font-size: 4.5rem;
+  font-weight: 500;
+  color: black;
+}
 
 @media (max-width: 768px) {
   .right-panel {

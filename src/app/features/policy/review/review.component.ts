@@ -21,7 +21,7 @@ export class ReviewComponent implements OnInit {
   formData: any;
 
   ngOnInit(): void {
-    this.stepsService.setStep(2);
+    this.stepsService.setStep(3);
     this.formData = this.storage.getAppFormData();
 
   }

@@ -14,7 +14,7 @@ export class StepsComponent {
 
   constructor(public stepsService: StepsService) {}
 
-  steps = ['Coverage Information', 'Application Form', 'Review and Payment', 'Confirmation'];
+  steps = ['Quote', 'Details', 'Application Form', 'Review and Payment', 'Confirmation'];
 
     goToStep(i: number) {
       let route = '';

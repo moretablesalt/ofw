@@ -19,7 +19,7 @@ export class ConfirmationComponent implements OnInit {
   private applicationFormStorageService = inject(ApplicationFormStorageService);
 
   ngOnInit(): void {
-    this.stepsService.setStep(3);
+    this.stepsService.setStep(4);
   }
 
   backToHome() {

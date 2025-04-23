@@ -5,6 +5,8 @@ import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
 import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzRadioComponent, NzRadioGroupComponent } from 'ng-zorro-antd/radio';
 import { StepsService } from '../../shared/steps/steps.service';
+import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quote',
@@ -28,6 +30,8 @@ export class QuoteComponent {
   insuranceForm!: FormGroup;
 
   private stepsService = inject(StepsService);
+  private quoteCalculatorService = inject(QuoteCalculatorService);
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {}
 
@@ -39,9 +43,12 @@ export class QuoteComponent {
     });
 
     this.stepsService.setStep(0);
+
+    this.quoteCalculatorService.setQuote(null);
   }
 
-  sayHello() {
-    alert('Get quote');
+  generateQuote() {
+    this.quoteCalculatorService.setQuote(100);
+    this.router.navigate(['/policy/details']);
   }
 }

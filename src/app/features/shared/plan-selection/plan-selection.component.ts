@@ -4,6 +4,8 @@ import { PRODUCTS } from '../../../data/product-data';
 import { Product } from '../../../models/product.model';
 import { ProductService } from '../../../services/product.service';
 import { Router } from '@angular/router';
+import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
+import { StepsService } from '../steps/steps.service';
 
 @Component({
   selector: 'app-plan-selection',
@@ -13,9 +15,10 @@ import { Router } from '@angular/router';
 })
 export class PlanSelectionComponent implements OnInit{
 
-  public insuranceEnvironmentService = inject(InsuranceEnvironmentService);
   public productService = inject(ProductService);
   private router = inject(Router);
+  public quoteCalculatorService = inject(QuoteCalculatorService);
+  public stepsService = inject(StepsService);
 
   products = PRODUCTS;
 
@@ -25,12 +28,8 @@ export class PlanSelectionComponent implements OnInit{
     this.chosenProduct = this.products.find(p => p.id === this.productService.getProductId());
   }
 
-  onSelect(env: 'sea' | 'land') {
-    this.insuranceEnvironmentService.setEnvironment(env);
-  }
-
   continue() {
-    this.router.navigate(['/policy/details']);
+    this.router.navigate(['/policy/application-form']);
   }
 
   changePlan() {

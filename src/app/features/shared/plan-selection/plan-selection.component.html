@@ -3,23 +3,15 @@
     <h2>{{ chosenProduct?.description }}</h2>
     <p>A comprehensive insurance program designed to protect our modern day heroes: The OFW.</p>
 
-    <div class="radio-group">
-      <label><input
-        type="radio"
-        name="environment"
-        value="sea"
-        [checked]="insuranceEnvironmentService.environment() === 'sea'"
-        (change)="onSelect('sea')"/> Sea Based</label>
-      <label><input
-        type="radio"
-        name="environment"
-        value="land"
-        [checked]="insuranceEnvironmentService.environment() === 'land'"
-        (change)="onSelect('land')"/> Land Based</label>
+    @if (quoteCalculatorService.getQuote()) {
+      <p>
+      <span class="dollar">$</span><span class="amount">{{ quoteCalculatorService.getQuote() }}</span><span> total</span>
+      </p>
 
-    </div>
-
-    <button class="continue-btn" (click)="continue()">Continue</button>
+      @if (stepsService.step() == 1) {
+        <button class="continue-btn" (click)="continue()">Continue</button>
+      }
+    }
     <button class="change-btn" (click)="changePlan()">Change Plan</button>
   </div>
 </div>
