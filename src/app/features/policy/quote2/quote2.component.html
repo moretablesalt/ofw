@@ -1,0 +1,71 @@
+<section class="package-form">
+  <h2>Customize Your Package</h2>
+  <p class="subtitle">Tell us a little about yourself so we can create the perfect package for you!</p>
+  <hr>
+
+  <!-- Civil Status -->
+  <div class="form-group">
+    <label class="section-label">What’s your civil status?</label>
+    <p class="sub">Knowing this helps us recommend the best option for your needs.</p>
+    <label class="sub-label">Civil Status*</label>
+    <nz-select [(ngModel)]="civilStatus" id="civilStatus" nzPlaceHolder="Select">
+      <nz-option nzValue="Single" nzLabel="Single"></nz-option>
+      <nz-option nzValue="Married" nzLabel="Married"></nz-option>
+      <nz-option nzValue="Widowed" nzLabel="Widowed"></nz-option>
+      <nz-option nzValue="Divorced" nzLabel="Divorced"></nz-option>
+    </nz-select>
+  </div>
+
+
+
+  <!-- Packages -->
+  <div class="form-group">
+    <label class="section-label">Choose Your Package</label>
+    <p class="sub">How many packages would you like to apply for? Just select the units that fits your situation.</p>
+
+    <!-- Package 1 (only for Married) -->
+    @if (civilStatus === "Married") {
+      <div class="package-row">
+        <div>
+          <strong>Package 1 (Spouse & Children)</strong>
+          <p class="sub">Minimum: 1, Maximum: 5</p>
+        </div>
+        <app-counter
+          [(value)]="package1Count"
+          [min]="1"
+          [max]="5">
+        </app-counter>
+      </div>
+    }
+
+    @if (civilStatus === "Single") {
+      <div class="package-row">
+        <div>
+          <strong>Package 2 (Parent & Sibling)</strong>
+          <p class="sub">Minimum: 1, Maximum: 4</p>
+        </div>
+        <app-counter
+          [(value)]="package2Count"
+          [min]="1"
+          [max]="4">
+        </app-counter>
+      </div>
+    }
+
+    <!-- Package 3 (Always shown) -->
+    <div class="package-row">
+      <div>
+        <strong>Package 3 (OFW)</strong>
+        <p class="sub">Optional, Maximum: 2</p>
+      </div>
+      <app-counter
+        [(value)]="package3Count"
+        [min]="0"
+        [max]="2">
+      </app-counter>
+    </div>
+  </div>
+
+  <button class="submit-btn" (click)=generateQuote()>Generate Quote</button>
+</section>
+
