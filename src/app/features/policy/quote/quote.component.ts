@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
@@ -7,6 +7,7 @@ import { NzRadioComponent, NzRadioGroupComponent } from 'ng-zorro-antd/radio';
 import { StepsService } from '../../shared/steps/steps.service';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-quote',
@@ -26,8 +27,10 @@ import { Router } from '@angular/router';
   templateUrl: './quote.component.html',
   styleUrl: './quote.component.css'
 })
-export class QuoteComponent {
+export class QuoteComponent implements OnInit {
   insuranceForm!: FormGroup;
+  private readonly STORAGE_KEY_QUOTE_DETAILS = 'quoteDetails';
+  private destroy$ = new Subject<void>();
 
   private stepsService = inject(StepsService);
   private quoteCalculatorService = inject(QuoteCalculatorService);
@@ -45,6 +48,21 @@ export class QuoteComponent {
     this.stepsService.setStep(0);
 
     this.quoteCalculatorService.setQuote(null);
+
+
+
+    // Restore if saved
+    const saved = sessionStorage.getItem(this.STORAGE_KEY_QUOTE_DETAILS);
+    if (saved) {
+      this.insuranceForm.patchValue(JSON.parse(saved));
+    }
+
+    // Auto-save on change
+    this.insuranceForm.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(value => {
+      sessionStorage.setItem(this.STORAGE_KEY_QUOTE_DETAILS, JSON.stringify(value));
+    });
   }
 
   generateQuote() {
