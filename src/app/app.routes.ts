@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { quoteGuard } from './guard/quote.guard';
 
 export const routes: Routes = [
   {
@@ -36,16 +37,19 @@ export const routes: Routes = [
         path: 'details',
         loadComponent: () => import('./features/policy/details/details.component').then(m => m.DetailsComponent),
         title: 'Policy Details',
+        canActivate: [quoteGuard]
       },
       {
         path: 'application-form',
         loadComponent: () => import('./features/policy/application-form/application-form.component').then(m => m.ApplicationFormComponent),
         title: 'Application Form',
+        canActivate: [quoteGuard]
       },
       {
         path: 'review',
         loadComponent: () => import('./features/policy/review/review.component').then(m => m.ReviewComponent),
         title: 'Application Form',
+        canActivate: [quoteGuard]
       },
     ]
   },
