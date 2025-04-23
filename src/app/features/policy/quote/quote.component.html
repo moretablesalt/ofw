@@ -1,6 +1,7 @@
+@if (productService.getProductId() === 'B') {
   <section>
     <form  [formGroup]="insuranceForm" (ngSubmit)="generateQuote()" nz-form nzLayout="vertical">
-      <h2>Compulsory Insurance</h2>
+      <h2>Rehires and Direct Hires Migrant Workers</h2>
 
       <nz-form-item>
         <nz-form-label nzFor="insuranceType">
@@ -37,3 +38,7 @@
       <button type="submit" [disabled]="insuranceForm.invalid">Generate Quote</button>
     </form>
   </section>
+} @else {
+  <app-quote2></app-quote2>
+}
+

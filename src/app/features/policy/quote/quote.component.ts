@@ -8,6 +8,8 @@ import { StepsService } from '../../shared/steps/steps.service';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { Quote2Component } from '../quote2/quote2.component';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-quote',
@@ -22,7 +24,8 @@ import { Subject, takeUntil } from 'rxjs';
     ReactiveFormsModule,
     NzFormDirective,
     NzRadioGroupComponent,
-    NzRadioComponent
+    NzRadioComponent,
+    Quote2Component
   ],
   templateUrl: './quote.component.html',
   styleUrl: './quote.component.css'
@@ -32,6 +35,7 @@ export class QuoteComponent implements OnInit {
   private readonly STORAGE_KEY_QUOTE_DETAILS = 'quoteDetails';
   private destroy$ = new Subject<void>();
 
+  public productService = inject(ProductService);
   private stepsService = inject(StepsService);
   private quoteCalculatorService = inject(QuoteCalculatorService);
   private router = inject(Router);
@@ -48,8 +52,6 @@ export class QuoteComponent implements OnInit {
     this.stepsService.setStep(0);
 
     this.quoteCalculatorService.setQuote(null);
-
-
 
     // Restore if saved
     const saved = sessionStorage.getItem(this.STORAGE_KEY_QUOTE_DETAILS);

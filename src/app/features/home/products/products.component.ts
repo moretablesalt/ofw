@@ -16,10 +16,6 @@ export class ProductsComponent {
 
   continue(productId: string) {
     this.productService.setProductId(productId);
-    if (productId === 'C') {
-      this.router.navigate(['/civil-status']);
-    } else {
-      this.router.navigate(['/policy']);
-    }
+    this.router.navigate(['/policy']);
   }
 }
