@@ -1,0 +1,5 @@
+<div class="styled-counter">
+  <button class="btn minus" [disabled]="value <= min" (click)="decrement()">−</button>
+  <div class="count-display">{{ value }}</div>
+  <button class="btn plus" [disabled]="value >= max" (click)="increment()">+</button>
+</div>
