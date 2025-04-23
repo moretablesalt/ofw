@@ -1,1 +1,21 @@
-<p>faqs works!</p>
+<section class="faq-wrapper">
+  <p class="section-label">FAQs</p>
+  <h2>How may I help you?</h2>
+  <p class="subtext">
+    Got questions about coverage, claims, or payment? We’ve compiled answers<br />
+    to help you understand your options and get the support you need.
+  </p>
+
+  <div class="faq-box">
+    <div class="faq-category-header">OFW insurance</div>
+
+    <nz-collapse [nzExpandIconPosition]="'end'" class="faq-collapse" [nzAccordion]="true" [nzBordered]="false">
+      <nz-collapse-panel
+        *ngFor="let faq of faqs; let i = index"
+        [nzHeader]="faq.question"
+        [nzActive]="i === 0">
+        <p style="white-space: pre-line;">{{ faq.answer }}</p>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div>
+</section>

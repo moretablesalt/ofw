@@ -11,7 +11,6 @@ import {Router} from '@angular/router';
   imports: [
     CounterComponent,
     FormsModule,
-    NgIf,
     NzOptionComponent,
     NzSelectComponent,
     ReactiveFormsModule

@@ -1,0 +1,82 @@
+.faq-wrapper {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.section-label {
+  color: #219d69;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #344054;
+}
+
+.subtext {
+  font-size: 0.95rem;
+  color: #667085;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.faq-box {
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  background: white;
+}
+
+.faq-category-header {
+  background-color: #219d69;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Collapse root */
+.faq-collapse ::ng-deep .ant-collapse {
+  border-radius: 0;
+}
+
+/* Collapse item */
+.faq-collapse ::ng-deep .ant-collapse-item {
+  background: white;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Header */
+.faq-collapse ::ng-deep .ant-collapse-header {
+  padding: 1rem 1.5rem;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+
+/* Highlight active header */
+.faq-collapse ::ng-deep .ant-collapse-item-active .ant-collapse-header {
+  background-color: #FAFFFD;
+  color: #219d69;
+  font-weight: 600;
+}
+
+/* Green answer content */
+.faq-collapse ::ng-deep .ant-collapse-item-active .ant-collapse-content {
+  background-color: #FAFFFD;
+}
+
+.faq-collapse ::ng-deep .ant-collapse-content-box {
+  padding: 0 1.5rem 1.5rem;
+  color: #219d69;
+  font-size: 14px;
+}

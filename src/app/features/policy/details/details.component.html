@@ -1,17 +1,17 @@
-<div class="tabs">
-  <button
-    class="tab"
-    [class.active]="insuranceEnvironmentService.environment() === 'sea'"
-    (click)="setEnvironment('sea')">
-    Sea based
-  </button>
-  <button
-    class="tab"
-    [class.active]="insuranceEnvironmentService.environment() === 'land'"
-    (click)="setEnvironment('land')">
-    Land based
-  </button>
-</div>
+<!--<div class="tabs">-->
+<!--  <button-->
+<!--    class="tab"-->
+<!--    [class.active]="insuranceEnvironmentService.environment() === 'sea'"-->
+<!--    (click)="setEnvironment('sea')">-->
+<!--    Sea based-->
+<!--  </button>-->
+<!--  <button-->
+<!--    class="tab"-->
+<!--    [class.active]="insuranceEnvironmentService.environment() === 'land'"-->
+<!--    (click)="setEnvironment('land')">-->
+<!--    Land based-->
+<!--  </button>-->
+<!--</div>-->
 
 @if (insuranceEnvironmentService.environment() === 'sea') {
   <div class="tab-content">

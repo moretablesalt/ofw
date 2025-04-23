@@ -7,8 +7,8 @@
         @if (i < stepsService.step()) {
           <ng-container><img
             [class.completed]="i < stepsService.step()"
-            [class.clickable]="i < stepsService.step() && stepsService.step() < 3"
-            (click)="i < stepsService.step() && stepsService.step() < 3 && goToStep(i)"
+            [class.clickable]="i < stepsService.step() && stepsService.step() < 4"
+            (click)="i < stepsService.step() && stepsService.step() < 4 && goToStep(i)"
             src="images/steps/check.svg" alt="">
           </ng-container>
         }
