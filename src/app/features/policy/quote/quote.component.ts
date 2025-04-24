@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Quote2Component } from '../quote2/quote2.component';
 import { ProductService } from '../../../services/product.service';
+import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 
 @Component({
   selector: 'app-quote',
@@ -35,40 +36,49 @@ export class QuoteComponent implements OnInit {
   private readonly STORAGE_KEY_QUOTE_DETAILS = 'quoteDetails';
   private destroy$ = new Subject<void>();
 
-  public productService = inject(ProductService);
+  readonly productService = inject(ProductService);
   private stepsService = inject(StepsService);
   private quoteCalculatorService = inject(QuoteCalculatorService);
   private router = inject(Router);
+  private insuranceEnvironmentService = inject(InsuranceEnvironmentService);
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.initForm();
+    this.restoreForm();
+    this.autoSaveForm();
+    this.stepsService.setStep(0);
+    this.quoteCalculatorService.setQuote(null);
+  }
+
+  generateQuote() {
+    const insuranceType = this.insuranceForm.get('insuranceType')?.value;
+    this.quoteCalculatorService.setQuote(100);
+    this.insuranceEnvironmentService.setEnvironment(insuranceType);
+    this.router.navigate(['/policy/details']);
+  }
+
+  private initForm(): void {
     this.insuranceForm = this.fb.group({
       insuranceType: ['sea', Validators.required],
       startDate: [null, Validators.required],
       endDate: [null, Validators.required]
     });
+  }
 
-    this.stepsService.setStep(0);
-
-    this.quoteCalculatorService.setQuote(null);
-
-    // Restore if saved
+  private restoreForm() {
     const saved = sessionStorage.getItem(this.STORAGE_KEY_QUOTE_DETAILS);
     if (saved) {
       this.insuranceForm.patchValue(JSON.parse(saved));
     }
+  }
 
-    // Auto-save on change
+  private autoSaveForm() {
     this.insuranceForm.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-      sessionStorage.setItem(this.STORAGE_KEY_QUOTE_DETAILS, JSON.stringify(value));
-    });
-  }
-
-  generateQuote() {
-    this.quoteCalculatorService.setQuote(100);
-    this.router.navigate(['/policy/details']);
+        sessionStorage.setItem(this.STORAGE_KEY_QUOTE_DETAILS, JSON.stringify(value));
+      });
   }
 }
