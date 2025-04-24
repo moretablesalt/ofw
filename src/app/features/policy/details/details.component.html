@@ -1,60 +1,50 @@
-<!--<div class="tabs">-->
-<!--  <button-->
-<!--    class="tab"-->
-<!--    [class.active]="insuranceEnvironmentService.environment() === 'sea'"-->
-<!--    (click)="setEnvironment('sea')">-->
-<!--    Sea based-->
-<!--  </button>-->
-<!--  <button-->
-<!--    class="tab"-->
-<!--    [class.active]="insuranceEnvironmentService.environment() === 'land'"-->
-<!--    (click)="setEnvironment('land')">-->
-<!--    Land based-->
-<!--  </button>-->
-<!--</div>-->
-
-@if (insuranceEnvironmentService.environment() === 'sea') {
-  <div class="tab-content">
-    <table class="coverage-table">
-      <thead>
+@if(productService.getProductId() === 'B') {
+  @if (insuranceEnvironmentService.environment() === 'sea') {
+    <div class="tab-content">
+      <table class="coverage-table">
+        <thead>
         <tr>
           <th>Coverage</th>
           <th>Insurance Amount</th>
         </tr>
-      </thead>
-      <tbody>
-        @for (coverage of selectedProduct?.seaCoverages; track coverage) {
-          <tr>
-            <td>{{ coverage.coverage }}</td>
-            <td>{{ coverage.amount}}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @for (coverage of selectedProduct?.seaCoverages; track coverage) {
+            <tr>
+              <td>{{ coverage.coverage }}</td>
+              <td>{{ coverage.amount}}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  @if (insuranceEnvironmentService.environment() === 'land') {
+    <div class="tab-content">
+      <table class="coverage-table">
+        <thead>
+        <tr>
+          <th>Coverage</th>
+          <th>Insurance Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (coverage of selectedProduct?.landCoverages; track coverage) {
+            <tr>
+              <td>{{ coverage.coverage }}</td>
+              <td>{{ coverage.amount}}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  <div class="button-container">
+    <button class="continue" (click)="continue()">Continue</button>
   </div>
 }
 
-@if (insuranceEnvironmentService.environment() === 'land') {
-  <div class="tab-content">
-    <table class="coverage-table">
-      <thead>
-      <tr>
-        <th>Coverage</th>
-        <th>Insurance Amount</th>
-      </tr>
-      </thead>
-      <tbody>
-        @for (coverage of selectedProduct?.landCoverages; track coverage) {
-          <tr>
-            <td>{{ coverage.coverage }}</td>
-            <td>{{ coverage.amount}}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+@if(productService.getProductId() === 'C') {
+  <app-details2></app-details2>
 }
-
-<div class="button-container">
-  <button class="continue" (click)="continue()">Continue</button>
-</div>

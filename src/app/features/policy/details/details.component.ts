@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { PRODUCTS } from '../../../data/product-data';
 import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
+import { Details2Component } from '../details2/details2.component';
 
 interface Coverage {
   coverage: string;
@@ -20,7 +21,9 @@ interface Product {
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [
+    Details2Component
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
