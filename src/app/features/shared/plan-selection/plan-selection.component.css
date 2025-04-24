@@ -19,7 +19,7 @@
 
 .insurance-box p {
   color: #555;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -64,14 +64,26 @@
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
 }
+
+.amount-container {
+  margin-bottom: 2.2rem;
+  margin-top: 1rem;
+}
+
 .dollar {
   font-size: 1.5rem;
   font-weight: 500;
 }
+
 .amount {
-  font-size: 4.5rem;
+  font-size: 4.7rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #424141;
+}
+
+.environment {
   font-weight: 500;
-  color: black;
 }
 
 @media (max-width: 768px) {

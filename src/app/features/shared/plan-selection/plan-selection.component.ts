@@ -6,10 +6,13 @@ import { ProductService } from '../../../services/product.service';
 import { Router } from '@angular/router';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { StepsService } from '../steps/steps.service';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-plan-selection',
-  imports: [],
+  imports: [
+    TitleCasePipe
+  ],
   templateUrl: './plan-selection.component.html',
   styleUrl: './plan-selection.component.css'
 })
@@ -19,6 +22,7 @@ export class PlanSelectionComponent implements OnInit{
   private router = inject(Router);
   public quoteCalculatorService = inject(QuoteCalculatorService);
   public stepsService = inject(StepsService);
+  public insuranceEnvironmentService = inject(InsuranceEnvironmentService);
 
   products = PRODUCTS;
 

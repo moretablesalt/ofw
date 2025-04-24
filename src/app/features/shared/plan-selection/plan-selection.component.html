@@ -4,10 +4,22 @@
     <p>A comprehensive insurance program designed to protect our modern day heroes: The OFW.</p>
 
     @if (quoteCalculatorService.getQuote()) {
-      <p>
-      <span class="dollar">$</span><span class="amount">{{ quoteCalculatorService.getQuote() }}</span><span> total</span>
-      </p>
+      @if (productService.getProductId() == 'B') {
+        <div class="amount-container">
+          <p>
+            <span class="currency">$</span><span class="amount">{{ quoteCalculatorService.getQuote() }}</span><span> total</span>
+          </p>
+          <p class="environment">{{ insuranceEnvironmentService.environment() | titlecase }} Based</p>
+        </div>
+      }
 
+      @if (productService.getProductId() == 'C') {
+        <div class="amount-container">
+          <p>
+            <span class="currency">P</span><span class="amount">{{ quoteCalculatorService.getQuote() }}</span><span> total</span>
+          </p>
+        </div>
+      }
       @if (stepsService.step() == 1) {
         <button class="continue-btn" (click)="continue()">Continue</button>
       }
