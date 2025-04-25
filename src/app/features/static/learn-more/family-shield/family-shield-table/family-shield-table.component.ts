@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './family-shield-table.component.css'
 })
 export class FamilyShieldTableComponent {
+  package = 1;
 
+  setPackage(chosenPackage: number) {
+    this.package = chosenPackage;
+  }
+
+  continue() {
+
+  }
 }

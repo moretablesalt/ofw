@@ -5,7 +5,7 @@ export const PRODUCTS: Product[] = [
     id: 'A',
     description: 'Agency-Hired Migrant Workers',
     seaCoverages: [
-      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 11,000.00' },
+      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 10,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
       { coverage: 'Permanent Total Disablement', amount: 'USD 7,500.00' },
       { coverage: 'Repatriation Cost (Death and/or Termination of Employment)', amount: 'Actual Cost' },
@@ -16,7 +16,7 @@ export const PRODUCTS: Product[] = [
       { coverage: 'Medical Repatriation', amount: 'Actual Cost' }
     ],
     landCoverages: [
-      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 22,000.00' },
+      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 10,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
       { coverage: 'Permanent Total Disablement', amount: 'USD 7,500.00' },
       { coverage: 'Repatriation Cost (Death and/or Termination of Employment)', amount: 'Actual Cost' },
@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
     id: 'B',
     description: 'Rehires and Direct Hires Migrant Workers',
     seaCoverages: [
-      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 33,000.00' },
+      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 10,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
       { coverage: 'Permanent Total Disablement', amount: 'USD 7,500.00' },
       { coverage: 'Repatriation Cost (Death and/or Termination of Employment)', amount: 'Actual Cost' },
@@ -42,7 +42,7 @@ export const PRODUCTS: Product[] = [
       { coverage: 'Medical Repatriation', amount: 'Actual Cost' }
     ],
     landCoverages: [
-      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 44,000.00' },
+      { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 10,000.00' },
       { coverage: 'Natural Death', amount: 'USD 10,000.00', note: 'Underwritten by First Life Financial Company Inc.' },
       { coverage: 'Permanent Total Disablement', amount: 'USD 7,500.00' },
       { coverage: 'Repatriation Cost (Death and/or Termination of Employment)', amount: 'Actual Cost' },
