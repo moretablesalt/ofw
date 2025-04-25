@@ -72,5 +72,32 @@ export const routes: Routes = [
     path: 'claims',
     loadComponent: () => import('./features/static/claims/claims.component').then(m => m.ClaimsComponent),
     title: 'Claims',
-  }
+  },
+  {
+    path: 'learn-more',
+    loadComponent: () => import('./features/static/learn-more/learn-more.component').then(m => m.LearnMoreComponent),
+    title: 'Learn More',
+    children: [
+      {
+        path: '',
+        redirectTo: 'compulsory',
+        pathMatch: 'full'
+      },
+      {
+        path: 'compulsory',
+        loadComponent: () => import('./features/static/learn-more/compulsory/compulsory.component').then(m => m.CompulsoryComponent),
+        title: 'Policy Details',
+      },
+      {
+        path: 'rehires',
+        loadComponent: () => import('./features/static/learn-more/rehires/rehires.component').then(m => m.RehiresComponent),
+        title: 'Policy Details',
+      },
+      {
+        path: 'family-shield',
+        loadComponent: () => import('./features/static/learn-more/family-shield/family-shield.component').then(m => m.FamilyShieldComponent),
+        title: 'Application Form',
+      },
+    ]
+  },
 ];

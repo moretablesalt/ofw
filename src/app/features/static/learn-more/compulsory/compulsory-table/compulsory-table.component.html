@@ -1,0 +1,208 @@
+<div class="tabs">
+  <button
+    class="tab"
+    [class.active]="package == 1"
+    (click)="setPackage(1)">
+    Package 1
+  </button>
+  <button
+    class="tab"
+    [class.active]="package==2"
+    (click)="setPackage(2)">
+    Package 2
+  </button>
+  <button
+    class="tab"
+    [class.active]="package==3"
+    (click)="setPackage(3)">
+    Package 3
+  </button>
+</div>
+
+@if (package == 1) {
+  <div class="tab-content">
+    <table class="coverage-table">
+      <thead>
+      <tr>
+        <th style="width: 55%;">Package 1 (Spouse & Children)</th>
+        <th style="width: 22.5%;">Spouse</th>
+        <th style="width: 22.5%;">Each Child (max of 4 children)</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th colspan="2" class="unit">Per Unit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Accidental Death / Dismemberment / Disablement (AD&D)</td>
+        <td>PHP 100,000</td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td>Permanent Total Disablement / Dismemberment (PTD) <strong>– due to Accident</strong></td>
+        <td>PHP 100,000</td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td>Unprovoked Murder or Assault (UM&A) <strong>- subject to territorial limitations</strong></td>
+        <td>PHP 100,000</td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td>Accident Medical Reimbursement (AMR) <strong>– including UM&A and MCB</strong></td>
+        <td>PHP 10,000</td>
+        <td>PHP 5,000</td>
+      </tr>
+      <tr>
+        <td>Accident Burial Benefit (ABB) <strong>– including MCB</strong></td>
+        <td>PHP 10,000</td>
+        <td>PHP 5,000</td>
+      </tr>
+      <tr>
+        <td>Daily Hospital Income (DHI) <strong>– up to 30 days, due to Accident</strong></td>
+        <td>PHP 500/day</td>
+        <td>PHP 250/day</td>
+      </tr>
+      <tr>
+        <td>Daily Hospital Income (DHI) <strong>– up to 15 days, due to Sickness (including Covid-19)</strong></td>
+        <td>PHP 500/day</td>
+        <td>PHP 250/day</td>
+      </tr>
+      <tr>
+        <td>Motorcycling Benefit (MCB) <strong>– applicable benefits only</strong></td>
+        <td>100%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><strong>Annual Premium Per Unit, Inclusive of taxes (max of 5 units)</strong></td>
+        <td><strong>PHP 500.00</strong></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+}
+
+@if (package == 2) {
+  <div class="tab-content">
+    <table class="coverage-table">
+      <thead>
+      <tr>
+        <th style="width: 55%;">Package 2 (Parents & Siblings)</th>
+        <th style="width: 22.5%;">Spouse</th>
+        <th style="width: 22.5%;">Each Child (max of 4 children)</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th colspan="2" class="unit">Per Unit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Accidental Death / Dismemberment / Disablement (AD&D)</td>
+        <td>PHP 100,000</td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td>Permanent Total Disablement / Dismemberment (PTD) <strong>– due to Accident</strong></td>
+        <td>PHP 100,000</td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td>Unprovoked Murder or Assault (UM&A) <strong>- subject to territorial limitations</strong></td>
+        <td>PHP 100,000</td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td>Accident Medical Reimbursement (AMR) <strong>– including UM&A and MCB</strong></td>
+        <td>PHP 10,000</td>
+        <td>PHP 5,000</td>
+      </tr>
+      <tr>
+        <td>Accident Burial Benefit (ABB) <strong>– including MCB</strong></td>
+        <td>PHP 10,000</td>
+        <td>PHP 5,000</td>
+      </tr>
+      <tr>
+        <td>Daily Hospital Income (DHI) <strong>– up to 30 days, due to Accident</strong></td>
+        <td>PHP 500/day</td>
+        <td>PHP 250/day</td>
+      </tr>
+      <tr>
+        <td>Daily Hospital Income (DHI) <strong>– up to 15 days, due to Sickness (including Covid-19)</strong></td>
+        <td>PHP 500/day</td>
+        <td>PHP 250/day</td>
+      </tr>
+      <tr>
+        <td>Motorcycling Benefit (MCB) <strong>– applicable benefits only</strong></td>
+        <td>100%</td>
+        <td>100%</td>
+      </tr>
+      <tr>
+        <td><strong>Annual Premium Per Unit, Inclusive of taxes (max of 5 units)</strong></td>
+        <td><strong>PHP 500.00</strong></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+}
+
+@if (package == 3) {
+  <div class="tab-content">
+    <table class="coverage-table">
+      <thead>
+      <tr>
+        <th colspan="2">Package 3 (OFW)</th>
+        <th>Per Unit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="2">Accidental Death / Dismemberment / Disablement (AD&D)</td>
+        <td>PHP 100,000</td>
+      </tr>
+      <tr>
+        <td colspan="2">Permanent Total Disablement / Dismemberment (PTD) – <strong>due to Accident</strong></td>
+        <td>PHP 100,000</td>
+      </tr>
+      <tr>
+        <td colspan="2">Unprovoked Murder or Assault (UM&A) – <strong>subject to territorial limitations</strong></td>
+        <td>PHP 50,000</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          Financial Assistance Benefit (FAB) – death due to non-accidental cause<br>
+          <em>(underwritten by First Life Financial)</em>
+        </td>
+        <td>PHP 100,000</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <strong>Important Conditions:</strong><br>
+          <u>Death due to Suicide:</u><br>
+          • Covered after 6 consecutive months from effective date of the policy<br>
+          • Covered after 12 consecutive months from effective date of the policy<br>
+          • Above limits are part of and not in addition to FAB Benefit
+        </td>
+        <td>
+          <div>PHP 20,000</div>
+          <div>PHP 100,000</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <strong>Cash Assistance Benefit</strong> – actual medical expenses incurred due to<br>
+          Mental or nervous illness or anxiety (subject to submission of clinical diagnosis and supporting documents)
+        </td>
+        <td>PHP 15,000</td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Annual Premium Per Unit, inclusive of taxes (max of 2 units)</strong></td>
+        <td><strong>Php 800.00</strong></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+}

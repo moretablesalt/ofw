@@ -1,0 +1,26 @@
+section {
+  padding: 64px 176px;
+}
+
+h2 {
+  color: #219D69;
+
+  /* Text/T3/Medium */
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 166.667% */
+}
+
+@media (max-width: 1440px) {
+  section {
+    padding: 64px 135px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 14px 20px;
+  }
+}
