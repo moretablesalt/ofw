@@ -97,7 +97,12 @@ export const routes: Routes = [
         path: 'family-shield',
         loadComponent: () => import('./features/static/learn-more/family-shield/family-shield.component').then(m => m.FamilyShieldComponent),
         title: 'Application Form',
-      },
+      }
     ]
+  },
+  {
+    path: 'terms-and-conditions',
+    loadComponent: () => import('./features/static/terms-and-conditions/terms-and-conditions.component').then(m => m.TermsAndConditionsComponent),
+    title: 'Terms & Conditions',
   },
 ];
