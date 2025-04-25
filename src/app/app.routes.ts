@@ -6,17 +6,15 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
-    title: 'Home'
   },
   {
     path: 'home',
     loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
-    title: 'Home'
   },
   {
     path: 'civil-status',
     loadComponent: () => import('./features/civil-status/civil-status.component').then(m => m.CivilStatusComponent),
-    title: 'Civil status',
+    title: 'Policy | OFW Insurance – Prudential Guarantee',
   },
   {
     path: 'policy',
@@ -31,24 +29,24 @@ export const routes: Routes = [
       {
         path: 'quote',
         loadComponent: () => import('./features/policy/quote/quote.component').then(m => m.QuoteComponent),
-        title: 'Policy Details',
+        title: 'Policy | OFW Insurance – Prudential Guarantee',
       },
       {
         path: 'details',
         loadComponent: () => import('./features/policy/details/details.component').then(m => m.DetailsComponent),
-        title: 'Policy Details',
+        title: 'Policy Details | OFW Insurance – Prudential Guarantee',
         canActivate: [quoteGuard]
       },
       {
         path: 'application-form',
         loadComponent: () => import('./features/policy/application-form/application-form.component').then(m => m.ApplicationFormComponent),
-        title: 'Application Form',
+        title: 'Application Form | OFW Insurance – Prudential Guarantee',
         canActivate: [quoteGuard]
       },
       {
         path: 'review',
         loadComponent: () => import('./features/policy/review/review.component').then(m => m.ReviewComponent),
-        title: 'Application Form',
+        title: 'Review | OFW Insurance – Prudential Guarantee',
         canActivate: [quoteGuard]
       },
     ]
@@ -56,27 +54,27 @@ export const routes: Routes = [
   {
     path: 'confirmation',
     loadComponent: () => import('./features/confirmation/confirmation.component').then(m => m.ConfirmationComponent),
-    title: 'Confirmation',
+    title: 'Confirmation | OFW Insurance – Prudential Guarantee',
   },
   {
     path: 'faqs',
     loadComponent: () => import('./features/static/faqs/faqs.component').then(m => m.FaqsComponent),
-    title: 'FAQs',
+    title: 'FAQs | OFW Insurance – Prudential Guarantee',
   },
   {
     path: 'contact-us',
     loadComponent: () => import('./features/static/contact-us/contact-us.component').then(m => m.ContactUsComponent),
-    title: 'Contact Us',
+    title: 'Contact Us | OFW Insurance – Prudential Guarantee',
   },
   {
     path: 'claims',
     loadComponent: () => import('./features/static/claims/claims.component').then(m => m.ClaimsComponent),
-    title: 'Claims',
+    title: 'Claims | OFW Insurance – Prudential Guarantee',
   },
   {
     path: 'learn-more',
     loadComponent: () => import('./features/static/learn-more/learn-more.component').then(m => m.LearnMoreComponent),
-    title: 'Learn More',
+    title: 'Learn More | OFW Insurance – Prudential Guarantee',
     children: [
       {
         path: '',
@@ -86,23 +84,20 @@ export const routes: Routes = [
       {
         path: 'compulsory',
         loadComponent: () => import('./features/static/learn-more/compulsory/compulsory.component').then(m => m.CompulsoryComponent),
-        title: 'Policy Details',
       },
       {
         path: 'rehires',
         loadComponent: () => import('./features/static/learn-more/rehires/rehires.component').then(m => m.RehiresComponent),
-        title: 'Policy Details',
       },
       {
         path: 'family-shield',
         loadComponent: () => import('./features/static/learn-more/family-shield/family-shield.component').then(m => m.FamilyShieldComponent),
-        title: 'Application Form',
       }
     ]
   },
   {
     path: 'terms-and-conditions',
     loadComponent: () => import('./features/static/terms-and-conditions/terms-and-conditions.component').then(m => m.TermsAndConditionsComponent),
-    title: 'Terms & Conditions',
+    title: 'Terms & Conditions | OFW Insurance – Prudential Guarantee',
   },
 ];
