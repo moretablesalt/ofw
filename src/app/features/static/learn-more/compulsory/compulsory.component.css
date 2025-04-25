@@ -1,88 +1,81 @@
-.header {
+/* ---------- Layout ---------- */
+.product-header {
   display: flex;
-  /*border: 1px solid #E4E7EC;*/
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-bottom: 48px;
 }
 
-.header-left {
+.product-info {
   flex: 1;
 }
 
-.header-right {
+.product-action {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   flex: 1;
 }
 
+/* ---------- Typography ---------- */
 h3 {
   color: #101828;
   font-family: Montserrat, sans-serif;
   font-size: 48px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 60px; /* 125% */
+  line-height: 60px;
+  margin-bottom: 16px;
 }
 
 p {
   color: #667085;
-  /* Text/T4/Regular */
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 26px; /* 162.5% */
+  line-height: 26px;
+  margin-top: 8px;
 }
 
-.button {
+/* ---------- Button ---------- */
+.primary-btn {
   display: flex;
-  width: 166px;
-  height: 46px;
-  padding: 8px 24px 10px 24px;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-
+  width: 166px;
+  height: 46px;
+  padding: 8px 24px;
   border-radius: 6px;
-  border: 1px solid #FEFEFE;
+  border: none;
   background: #219D69;
-
   color: #FEFEFE;
-  text-align: center;
-
-  /* Text/T4/Medium */
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 26px; /* 162.5% */
+  line-height: 26px;
+  cursor: pointer;
 }
 
-
-.table-header {
+/* ---------- Section Title ---------- */
+.section-title {
   padding: 20px 30px;
   color: #FEFEFE;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 30px; /* 166.667% */
+  line-height: 30px;
   background-color: #219D69;
   margin-bottom: 16px;
 }
 
+/* ---------- Disclaimer ---------- */
 .disclaimer {
   padding: 16px;
-  align-items: center;
-  gap: 16px;
-
   border-radius: 4px;
   background: rgba(188, 225, 255, 0.12);
-
   color: #667085;
   font-family: "Work Sans", sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.5px;
