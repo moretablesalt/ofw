@@ -100,4 +100,9 @@ export const routes: Routes = [
     loadComponent: () => import('./features/static/terms-and-conditions/terms-and-conditions.component').then(m => m.TermsAndConditionsComponent),
     title: 'Terms & Conditions | OFW Insurance – Prudential Guarantee',
   },
+  {
+    path: 'privacy-policy',
+    loadComponent: () => import('./features/static/privacy-policy/privacy-policy.component').then(m => m.PrivacyPolicyComponent),
+    title: 'Privacy Policy | OFW Insurance – Prudential Guarantee',
+  },
 ];

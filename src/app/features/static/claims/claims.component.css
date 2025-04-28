@@ -1,0 +1,73 @@
+:host {
+  font-family: 'Work Sans', sans-serif;
+}
+
+section {
+  padding: 64px 176px;
+}
+
+.section-label {
+  color: #219d69;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #344054;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* The card background */
+.procedure-card {
+  background-color: #FAFFFD; /* Very light green */
+  border: 1px solid #e0e6e3; /* Soft thin border */
+  padding: 30px;
+  margin-bottom: 32px;
+}
+
+.section-title {
+  color: #219d69;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Each section A, B, etc. */
+.procedure-section {
+  margin-bottom: 2rem;
+}
+
+.procedure-section h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333; /* Not green title inside card */
+  margin-bottom: 12px;
+}
+
+.procedure-section p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 1440px) {
+  section {
+    padding: 64px 135px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 14px 20px;
+  }
+}
+

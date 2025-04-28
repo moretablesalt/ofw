@@ -1,0 +1,93 @@
+:host {
+  font-family: 'Work Sans', sans-serif;
+}
+
+section {
+  padding: 64px 176px;
+}
+
+.privacy-policy {
+  margin: 0 auto;
+}
+
+.section-title {
+  color: #219D69;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  margin-bottom: .5rem;
+}
+
+.title {
+  color: #344054;
+  font-family: Montserrat, sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 60px; /* 125% */
+}
+
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+::ng-deep p {
+  color: #667085;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+::ng-deep .ant-collapse > .ant-collapse-item {
+  background-color: #F2F4F7;
+}
+
+::ng-deep .ant-collapse > .ant-collapse-item.ant-collapse-item-active {
+  background-color: #219D69;
+
+}
+
+::ng-deep .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  color: #667085;
+}
+
+::ng-deep .ant-collapse > .ant-collapse-item.ant-collapse-item-active > .ant-collapse-header {
+  color: #FEFEFE;
+}
+
+/* Header text */
+::ng-deep .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-header-text {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
+
+::ng-deep .highlight {
+  color: #00A651;
+  font-weight: 500;
+}
+
+::ng-deep strong {
+  color: #667085;
+  font-weight: 500;
+}
+
+::ng-deep .ant-collapse-content-box {
+  background-color: #FAFFFD;
+}
+
+@media (max-width: 1440px) {
+  section {
+    padding: 64px 135px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 14px 20px;
+  }
+}

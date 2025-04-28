@@ -1,0 +1,15 @@
+<section>
+  <div class="privacy-policy">
+    <h4 class="section-title">Legal</h4>
+    <h1 class="title">Privacy Policy</h1>
+    <p class="subtitle">How Prudential Guarantee and Assurance, Inc. Protects Your Information</p>
+
+    <nz-collapse [nzExpandIconPosition]="'end'">
+      @for (item of policySections; track item) {
+        <nz-collapse-panel [nzHeader]="item.title" >
+          <div class="content-text" [innerHTML]="item.content"></div>
+        </nz-collapse-panel>
+      }
+    </nz-collapse>
+  </div>
+</section>
