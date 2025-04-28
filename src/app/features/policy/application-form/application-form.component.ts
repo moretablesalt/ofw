@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PersonalDataComponent } from './personal-data/personal-data.component';
 import { PassportComponent } from './passport/passport.component';
 import { WorkComponent } from './work/work.component';
@@ -11,6 +11,8 @@ import { QuoteDetailsStorageService } from '../../../services/quote-details-stor
 import { TimeHelperService } from '../../../services/time-helper.service';
 import { ProductService } from '../../../services/product.service';
 import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
+import { NzFormControlComponent, NzFormDirective, NzFormItemComponent } from 'ng-zorro-antd/form';
+import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 
 @Component({
   selector: 'app-application-form',
@@ -19,6 +21,10 @@ import { InsuranceEnvironmentService } from '../../../services/insurance-environ
     FormsModule,
     PassportComponent,
     WorkComponent,
+    ReactiveFormsModule,
+    NzFormControlComponent,
+    NzCheckboxComponent,
+    NzFormItemComponent,
   ],
   templateUrl: './application-form.component.html',
   styleUrl: './application-form.component.css'
@@ -160,7 +166,8 @@ export class ApplicationFormComponent implements OnInit {
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
         months: [null, [Validators.required]],
-      })
+      }),
+      acceptTerms: [false, Validators.requiredTrue] // Must be TRUE
     });
   }
 
