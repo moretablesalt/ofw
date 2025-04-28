@@ -63,6 +63,16 @@ button:disabled {
   border-radius: 8px;
 }
 
+::ng-deep .ant-btn {
+  height: 45px;
+}
+
+::ng-deep .ant-btn:focus,
+::ng-deep .ant-btn:hover {
+  color: #FEFEFE;
+  background-color: #1d8a5e;
+}
+
 [disabled] {
   cursor: not-allowed;
 }

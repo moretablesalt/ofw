@@ -1,6 +1,9 @@
-@if (productService.getProductId() === 'B') {
+@if (chosenProductId === 'B') {
   <section>
-    <form  [formGroup]="insuranceForm" (ngSubmit)="generateQuote()" nz-form nzLayout="vertical">
+    <form  [formGroup]="insuranceForm"
+           (ngSubmit)="generateQuote()"
+           nz-form
+           nzLayout="vertical">
       <h2>Rehires and Direct Hires Migrant Workers</h2>
 
       <nz-form-item>
@@ -8,7 +11,7 @@
           <strong>Choose Your Insurance Type</strong>
         </nz-form-label>
         <nz-form-control>
-          <nz-radio-group formControlName="insuranceType">
+          <nz-radio-group formControlName="insuranceType" [nzDisabled]="isLoading">
             <label nz-radio [nzValue]="'sea'">Sea Based</label>
             <label nz-radio [nzValue]="'land'">Land Based</label>
           </nz-radio-group>
@@ -22,23 +25,36 @@
           <nz-form-item>
             <nz-form-label [nzRequired]="true">Start Date</nz-form-label>
             <nz-form-control [nzErrorTip]="'Start date is required'">
-              <nz-date-picker formControlName="startDate"></nz-date-picker>
+              <nz-date-picker
+                [nzDisabled]="isLoading"
+                [nzDisabledDate]="disabledStartDate"
+                formControlName="startDate"></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </nz-col>
         <nz-col [nzXs]="24" [nzMd]="12">
           <nz-form-item>
             <nz-form-label [nzRequired]="true">End Date</nz-form-label>
-            <nz-form-control [nzErrorTip]="'Start date is required'">
-              <nz-date-picker formControlName="endDate"></nz-date-picker>
+            <nz-form-control [nzErrorTip]="'End date is required'">
+              <nz-date-picker
+                [nzDisabled]="isLoading"
+                [nzDisabledDate]="disabledEndDate"
+                formControlName="endDate"></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </nz-col>
       </nz-row>
-      <button type="submit" [disabled]="insuranceForm.invalid">Generate Quote</button>
+      <button nz-button
+              type="submit"
+              [disabled]="insuranceForm.invalid"
+              [nzLoading]="isLoading">
+        Generate Quote
+      </button>
     </form>
   </section>
 } @else {
   <app-quote2></app-quote2>
 }
 
+{{monthsCovered}}
+{{today}}
