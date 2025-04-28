@@ -1,3 +1,5 @@
+@use 'sass:map'; // Make sure you have this @use rule at the top of your file
+
 /* You can add global styles to this file, and also import other style files */
 $color-default: #219d69;
 $color-slightly-dark-green: #1d8a5e;
@@ -68,7 +70,7 @@ nz-date-picker {
 }
 
 /** Loading animation */
-$colors: #5e81ac, #81a1c1, #88c0d0, #8fbcbb, #d08770, #ebcb8b, #a3be8c, #b48ead;
+//$colors: #5e81ac, #81a1c1, #88c0d0, #8fbcbb, #d08770, #ebcb8b, #a3be8c, #b48ead;
 
 #splash-screen {
   width: 100%;
@@ -107,10 +109,21 @@ $colors: #5e81ac, #81a1c1, #88c0d0, #8fbcbb, #d08770, #ebcb8b, #a3be8c, #b48ead;
   }
 }
 
+$colors: (
+  1: #5e81ac,
+  2: #81a1c1,
+  3: #88c0d0,
+  4: #8fbcbb,
+  5: #d08770,
+  6: #ebcb8b,
+  7: #a3be8c,
+  8: #b48ead
+);
+
 @for $i from 1 through 8 {
   .ball-#{$i} {
     z-index: -#{$i};
-    background-color: nth($colors, $i);
+    background-color: map.get($colors, $i);
     animation-timing-function: cubic-bezier(0.5, 0.3 * $i, 0.9, 0.9);
   }
 }
