@@ -7,6 +7,10 @@ import { PassportComponent } from './passport/passport.component';
 import { WorkComponent } from './work/work.component';
 import { Subject, takeUntil } from 'rxjs';
 import { ApplicationFormStorageService } from '../../../services/application-form-storage.service';
+import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
+import { TimeHelperService } from '../../../services/time-helper.service';
+import { ProductService } from '../../../services/product.service';
+import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 
 @Component({
   selector: 'app-application-form',
@@ -20,30 +24,26 @@ import { ApplicationFormStorageService } from '../../../services/application-for
   styleUrl: './application-form.component.css'
 })
 export class ApplicationFormComponent implements OnInit {
-
-  private stepsService = inject(StepsService);
-  private router = inject(Router);
   form!: FormGroup;
+  chosenProductId = 'B';
+  chosenEnv = 'sea';
+
   private destroy$ = new Subject<void>();
-  private applicationFormStorageSerice = inject(ApplicationFormStorageService)
+
+  private readonly stepsService = inject(StepsService);
+  private readonly router = inject(Router);
+  private readonly applicationFormStorageSerice = inject(ApplicationFormStorageService)
+  private readonly quoteDetailsStorageSerice = inject(QuoteDetailsStorageService);
+  private readonly timeHelperService = inject(TimeHelperService);
+  private readonly productService = inject(ProductService);
+  private readonly insuranceEnvironmentService = inject(InsuranceEnvironmentService);
 
   constructor(private fb: FormBuilder) {
     this.buildForm();
-
-    const appForm = sessionStorage.getItem('appForm');
-    if (appForm) {
-      this.form.patchValue(JSON.parse(appForm));
-    }
   }
 
   ngOnInit() {
     this.stepsService.setStep(2);
-
-    this.form.valueChanges
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(value  => {
-        sessionStorage.setItem('appForm', JSON.stringify(value));
-      })
 
     const saved = this.applicationFormStorageSerice.getAppFormData();
     if (saved) {
@@ -56,6 +56,27 @@ export class ApplicationFormComponent implements OnInit {
         this.applicationFormStorageSerice.setAppFormData(value);
       });
 
+    const quoteDetail = this.quoteDetailsStorageSerice.getQuoteDetails();
+
+    if (quoteDetail) {
+      this.form.get('work.startDate')?.setValue(quoteDetail?.startDate);
+      this.form.get('work.endDate')?.setValue(quoteDetail?.endDate);
+      this.form.get('work.startDate')?.disable();
+      this.form.get('work.endDate')?.disable();
+
+      const duration = this.timeHelperService.calculateMonths(quoteDetail.startDate, quoteDetail.endDate);
+      this.form.get('work.months')?.setValue(duration);
+      this.form.get('work.months')?.disable();
+    }
+
+    this.chosenProductId = this.productService.getProductId();
+    this.chosenEnv = this.insuranceEnvironmentService.environment();
+
+    if (this.chosenEnv === 'land') {
+      if (this.form.get('work')) {
+        (this.form.get('work') as FormGroup)?.removeControl('vesselName');
+      }
+    }
   }
 
   continue() {
@@ -155,7 +176,7 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   fillWithFakeData(): void {
-    this.form.setValue({
+    const data = {
       personal: {
         lastName: 'Doe',
         firstName: 'John',
@@ -198,6 +219,23 @@ export class ApplicationFormComponent implements OnInit {
         startDate: '2022-01-01',
         endDate: '2022-12-31',
         months: 12
+      }
+    };
+
+    this.loadHardcodedData(this.form, data);
+  }
+
+  loadHardcodedData(form: FormGroup, data: any): void {
+    Object.keys(data).forEach(groupName => {
+      const group = form.get(groupName);
+      if (group instanceof FormGroup) {
+        const groupData = data[groupName];
+        Object.keys(groupData).forEach(fieldName => {
+          const control = group.get(fieldName);
+          if (control && (control.value === null || control.value === '' || control.value === undefined)) {
+            control.setValue(groupData[fieldName]);
+          }
+        });
       }
     });
   }

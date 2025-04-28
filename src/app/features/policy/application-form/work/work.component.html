@@ -37,14 +37,16 @@
         </nz-form-control>
       </nz-form-item>
     </nz-col>
-    <nz-col [nzXs]="24" [nzMd]="12">
-      <nz-form-item>
-        <nz-form-label [nzRequired]="true" nzFor="vesselName">Vessel Name</nz-form-label>
-        <nz-form-control>
-          <input nz-input id="vesselName" formControlName="vesselName" />
-        </nz-form-control>
-      </nz-form-item>
-    </nz-col>
+    @if(chosenEnv == 'sea') {
+      <nz-col [nzXs]="24" [nzMd]="12">
+        <nz-form-item>
+          <nz-form-label [nzRequired]="true" nzFor="vesselName">Vessel Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input id="vesselName" formControlName="vesselName" />
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+    }
   </nz-row>
 
   <nz-row [nzGutter]="16">

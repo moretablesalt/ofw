@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export class QuoteModel {
+  insuranceType!: string;
+  startDate!: Date;
+  endDate!: Date;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class QuoteDetailsStorageService {
   private readonly storageKey = 'quote-details';
-  private quoteDetails$ = new BehaviorSubject<any>(null);
+  private quoteDetails$ = new BehaviorSubject<QuoteModel | null>(null);
 
   constructor() {
     const saved = sessionStorage.getItem(this.storageKey);
@@ -20,7 +26,7 @@ export class QuoteDetailsStorageService {
     sessionStorage.setItem(this.storageKey, JSON.stringify(data));
   }
 
-  getQuoteDetails(): any {
+  getQuoteDetails(): QuoteModel | null {
     return this.quoteDetails$.getValue();
   }
 

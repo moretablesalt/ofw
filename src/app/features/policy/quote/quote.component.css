@@ -56,6 +56,7 @@ button {
 
 button:disabled {
   background-color: #999;
+  cursor: not-allowed;
 }
 
 ::ng-deep .ant-picker {
@@ -71,8 +72,4 @@ button:disabled {
 ::ng-deep .ant-btn:hover {
   color: #FEFEFE;
   background-color: #1d8a5e;
-}
-
-[disabled] {
-  cursor: not-allowed;
 }
