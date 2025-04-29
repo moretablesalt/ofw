@@ -11,8 +11,9 @@ import { QuoteDetailsStorageService } from '../../../services/quote-details-stor
 import { TimeHelperService } from '../../../services/time-helper.service';
 import { ProductService } from '../../../services/product.service';
 import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
-import { NzFormControlComponent, NzFormDirective, NzFormItemComponent } from 'ng-zorro-antd/form';
+import { NzFormControlComponent, NzFormItemComponent } from 'ng-zorro-antd/form';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
+import { FAKE_APPLICATION_FORM_DATA } from '../../../app.constants';
 
 @Component({
   selector: 'app-application-form',
@@ -50,31 +51,42 @@ export class ApplicationFormComponent implements OnInit {
 
   ngOnInit() {
     this.stepsService.setStep(2);
+    this.restoreFormValues();
+    this.listenToFormChanges()
+    this.setWorkDatesAndDuration();
+    this.removeVesselIfLandEnv();
+  }
 
+  // helpers
+  private restoreFormValues() {
     const saved = this.applicationFormStorageSerice.getAppFormData();
     if (saved) {
       this.form.patchValue(saved);
     }
+  }
 
+  private listenToFormChanges(): void {
     this.form.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-        this.applicationFormStorageSerice.setAppFormData(value);
-      });
+      this.applicationFormStorageSerice.setAppFormData(value);
+    });
+  }
 
-    const quoteDetail = this.quoteDetailsStorageSerice.getQuoteDetails();
+  private setWorkDatesAndDuration() {
+    const quote = this.quoteDetailsStorageSerice.getQuoteDetails();
+    if (!quote) return;
 
-    if (quoteDetail) {
-      this.form.get('work.startDate')?.setValue(quoteDetail?.startDate);
-      this.form.get('work.endDate')?.setValue(quoteDetail?.endDate);
-      this.form.get('work.startDate')?.disable();
-      this.form.get('work.endDate')?.disable();
+    // start and end date
+    this.setAndDisableFormControl('work.startDate', quote.startDate);
+    this.setAndDisableFormControl('work.endDate', quote.endDate);
 
-      const duration = this.timeHelperService.calculateMonths(quoteDetail.startDate, quoteDetail.endDate);
-      this.form.get('work.months')?.setValue(duration);
-      this.form.get('work.months')?.disable();
-    }
+    // duration
+    const duration = this.timeHelperService.calculateMonths(quote.startDate, quote.endDate);
+    this.setAndDisableFormControl('work.months', duration);
+  }
 
+  private removeVesselIfLandEnv() {
     this.chosenProductId = this.productService.getProductId();
     this.chosenEnv = this.insuranceEnvironmentService.environment();
 
@@ -85,26 +97,34 @@ export class ApplicationFormComponent implements OnInit {
     }
   }
 
+  private setAndDisableFormControl(controlPath: string, value: any): void {
+    const control = this.form.get(controlPath);
+    if (control) {
+      control.setValue(value);
+      control.disable();
+    }
+  }
+
+    // end helpers
   continue() {
 
     this.validateAllFormFields(this.form);
 
     if (this.form.invalid) {
-      // Scroll to the first invalid field
-      setTimeout(() => {
-        const firstInvalid = document.querySelector(
-          '.ng-invalid:not(form)'
-        ) as HTMLElement;
-
-        if (firstInvalid) {
-          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          (firstInvalid as HTMLElement).focus?.();
-        }
-      }, 100);
-      return;
+      this.scrollToFirstInvalidField();
     }
 
     this.router.navigate(['/policy/review']);
+  }
+
+  private scrollToFirstInvalidField(): void {
+    setTimeout(() => {
+      const firstInvalid = document.querySelector('.ng-invalid:not(form)') as HTMLElement;
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus?.();
+      }
+    }, 100);
   }
 
   get personalFormGroup(): FormGroup {
@@ -122,52 +142,68 @@ export class ApplicationFormComponent implements OnInit {
     return this.form.get('work') as FormGroup;
   }
 
-  buildForm() {
+  private buildForm(): void {
     this.form = this.fb.group({
-      personal: this.fb.group({
-        lastName: ['', Validators.required],
-        firstName: ['', Validators.required],
-        middleInitial: [''], // optional
-        title: ['', Validators.required],
-        civilStatus: ['', Validators.required],
-        birthDate: ['', Validators.required],
-        birthPlace: ['', Validators.required],
-        age: ['', [Validators.required, Validators.min(1)]],
-        tin: ['', Validators.required],
-        address: ['', Validators.required],
-        mobile: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]]
-      }),
-      passport: this.fb.group({
-        lastName: ['', Validators.required],
-        firstName: ['', Validators.required],
-        middleName: [''],
-        passportNo: ['', Validators.required],
-        issuedOn: ['', Validators.required],
-        issuedAt: ['', Validators.required]
-      }),
-      agency: this.fb.group({
-        agencyName: [''],
-        telephonePrefix: ['+63'],
-        telephoneNumber: [''],
-        mobilePrefix: ['+63'],
-        mobileNumber: [''],
-        contactPerson: [''],
-        email: ['']
-      }),
-      work: this.fb.group({
-        companyName: ['', Validators.required],
-        address: ['', Validators.required],
-        country: ['', Validators.required],
-        industry: ['', Validators.required],
-        vesselName: ['', Validators.required],
-        designation: ['', Validators.required],
-        contactNo: ['', Validators.required],
-        startDate: ['', Validators.required],
-        endDate: ['', Validators.required],
-        months: [null, [Validators.required]],
-      }),
-      acceptTerms: [false, Validators.requiredTrue] // Must be TRUE
+      personal: this.buildPersonalGroup(),
+      passport: this.buildPassportGroup(),
+      agency: this.buildAgencyGroup(),
+      work: this.buildWorkGroup(),
+      acceptTerms: [false, Validators.requiredTrue]
+    });
+  }
+
+  private buildPersonalGroup(): FormGroup {
+    return this.fb.group({
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      middleInitial: [''],
+      title: ['', Validators.required],
+      civilStatus: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      birthPlace: ['', Validators.required],
+      age: ['', [Validators.required, Validators.min(1)]],
+      tin: ['', Validators.required],
+      address: ['', Validators.required],
+      mobile: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  private buildPassportGroup(): FormGroup {
+    return this.fb.group({
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      middleName: [''],
+      passportNo: ['', Validators.required],
+      issuedOn: ['', Validators.required],
+      issuedAt: ['', Validators.required]
+    });
+  }
+
+  private buildAgencyGroup(): FormGroup {
+    return this.fb.group({
+      agencyName: [''],
+      telephonePrefix: ['+63'],
+      telephoneNumber: [''],
+      mobilePrefix: ['+63'],
+      mobileNumber: [''],
+      contactPerson: [''],
+      email: ['']
+    });
+  }
+
+  private buildWorkGroup(): FormGroup {
+    return this.fb.group({
+      companyName: ['', Validators.required],
+      address: ['', Validators.required],
+      country: ['', Validators.required],
+      industry: ['', Validators.required],
+      vesselName: ['', Validators.required],
+      designation: ['', Validators.required],
+      contactNo: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      months: [null, Validators.required]
     });
   }
 
@@ -175,7 +211,7 @@ export class ApplicationFormComponent implements OnInit {
     Object.values(formGroup.controls).forEach(control => {
       if (control instanceof FormControl) {
         control.markAsDirty();
-        control.updateValueAndValidity({ onlySelf: true });
+        control.updateValueAndValidity({onlySelf: true});
       } else if (control instanceof FormGroup) {
         this.validateAllFormFields(control); // 👈 Recursively validate nested groups
       }
@@ -183,53 +219,7 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   fillWithFakeData(): void {
-    const data = {
-      personal: {
-        lastName: 'Doe',
-        firstName: 'John',
-        middleInitial: 'A',
-        title: 'Mr.',
-        civilStatus: 'Single',
-        birthDate: '1990-01-01',
-        birthPlace: 'Manila',
-        age: 34,
-        tin: '123-456-789',
-        address: '123 Fake Street, QC',
-        mobile: '09171234567',
-        email: 'john.doe@example.com'
-      },
-      passport: {
-        lastName: 'Doe',
-        firstName: 'John',
-        middleName: 'Anthony',
-        passportNo: 'P1234567',
-        issuedOn: '2020-01-01',
-        issuedAt: 'DFA Manila'
-      },
-      agency: {
-        agencyName: 'Fake Agency Inc.',
-        telephonePrefix: '+63',
-        telephoneNumber: '287654321',
-        mobilePrefix: '+63',
-        mobileNumber: '9176543210',
-        contactPerson: 'Jane Smith',
-        email: 'agency@example.com'
-      },
-      work: {
-        companyName: 'Oceanic Corp.',
-        address: 'Port Area, Manila',
-        country: 'Philippines',
-        industry: 'Shipping',
-        vesselName: 'MV Horizon',
-        designation: 'Seafarer',
-        contactNo: '0287654321',
-        startDate: '2022-01-01',
-        endDate: '2022-12-31',
-        months: 12
-      }
-    };
-
-    this.loadHardcodedData(this.form, data);
+    this.loadHardcodedData(this.form, FAKE_APPLICATION_FORM_DATA);
   }
 
   loadHardcodedData(form: FormGroup, data: any): void {
@@ -246,5 +236,4 @@ export class ApplicationFormComponent implements OnInit {
       }
     });
   }
-
 }

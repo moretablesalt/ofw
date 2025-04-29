@@ -5,8 +5,9 @@ import { ApplicationFormStorageService } from '../../../services/application-for
 import { DatePipe, JsonPipe } from '@angular/common';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
-import {ApplicationBuilderService} from '../../../services/application-builder.service';
-import {switchMap} from 'rxjs';
+import { ApplicationBuilderService } from '../../../services/application-builder.service';
+import { switchMap } from 'rxjs';
+import { PAYMENT_CONFIG } from '../../../app.constants';
 
 @Component({
   selector: 'app-review',
@@ -32,12 +33,7 @@ export class ReviewComponent implements OnInit {
   hash: any;
 
   // pesopay form
-  paymentUrl = 'https://test.pesopay.com/b2cDemo/eng/payment/payForm.jsp';
-  merchantId = '18067292';
   amount: any;
-  successUrl= 'http://localhost:4200/confirmation';
-  failUrl = 'http://localhost:4200/confirmation';
-  cancelUrl = 'http://localhost:4200/confirmation';
 
   ngOnInit(): void {
     this.stepsService.setStep(3);
@@ -69,49 +65,58 @@ export class ReviewComponent implements OnInit {
   }
 
   mapToPayload() {
+
+    const personal = this.formData.personal;
+    const work = this.formData.work;
+    const passport = this.formData.passport;
+
+    const startDate = this.quoteDetailsStorageService.getStartDateClean();
+    const endDate = this.quoteDetailsStorageService.getEndDateClean();
+    const period = this.quoteDetailsStorageService.getPeriod();
+
     return {
       isCreatedViaAgent: false,
-      startDate: this.quoteDetailsStorageService.getStartDateClean(),
-      endDate: this.quoteDetailsStorageService.getEndDateClean(),
+      startDate: startDate,
+      endDate: endDate,
       product: {
         code: "OFW_COMPULSORY"
       },
       totalNumberOfTravelers: 1,
       travelers: [
         {
-          firstName: this.formData.personal.firstName,
-          middleName: this.formData.personal.middleInitial,
-          lastName: this.formData.personal.lastName,
+          firstName: personal.firstName,
+          middleName: personal.middleInitial,
+          lastName: personal.lastName,
           sequenceNo: 1,
           isPrimary: true,
-          dateOfBirth: this.formData.personal.birthDate,
-          email: this.formData.personal.email,
-          age: this.formData.personal.age.toString(),
-          contactNumber: this.formData.personal.mobile,
-          hasTIN: !!this.formData.personal.tin,
-          taxIdentificationNumber: this.formData.personal.tin,
-          streetAddress1: this.formData.personal.address,
+          dateOfBirth: personal.birthDate,
+          email: personal.email,
+          age: personal.age.toString(),
+          contactNumber: personal.mobile,
+          hasTIN: !!personal.tin,
+          taxIdentificationNumber: personal.tin,
+          streetAddress1: personal.address,
           premium: {
             totalPremium: this.quoteCalculatorService.getQuote(),
           },
           passport: {
-            lastName: this.formData.passport.lastName,
-            firstName: this.formData.passport.firstName,
-            middleName: this.formData.passport.middleName,
-            passportNo: this.formData.passport.passportNo,
-            issuedOn: this.formData.passport.issuedOn,
-            issuedAt: this.formData.passport.issuedAt
+            lastName: passport.lastName,
+            firstName: passport.firstName,
+            middleName: passport.middleName,
+            passportNo: passport.passportNo,
+            issuedOn: passport.issuedOn,
+            issuedAt: passport.issuedAt,
           },
           work: {
-            companyName: this.formData.work.companyName,
-            address: this.formData.work.address,
-            country: this.formData.work.country,
-            industry: this.formData.work.industry,
-            vesselName: this.formData.work.vesselName,
-            designation: this.formData.work.designation,
-            startDate: this.quoteDetailsStorageService.getStartDateClean(),
-            endDate: this.quoteDetailsStorageService.getEndDateClean(),
-            periodCoverage: this.quoteDetailsStorageService.getPeriod()
+            companyName: work.companyName,
+            address: work.address,
+            country: work.country,
+            industry: work.industry,
+            vesselName: work.vesselName,
+            designation: work.designation,
+            startDate: startDate,
+            endDate: endDate,
+            periodCoverage: period,
           },
           totalSumInsured: 198000
         }
@@ -128,9 +133,9 @@ export class ReviewComponent implements OnInit {
 
   private createAndSubmitPaymentForm(): void {
     const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = this.paymentUrl; // Payment Gateway URL
-    form.style.display = 'none'; // Hide form from UI
+    form.method = PAYMENT_CONFIG.method;
+    form.action = PAYMENT_CONFIG.url; // Payment Gateway URL
+    form.style.display = PAYMENT_CONFIG.styleDisplay; // Hide form from UI
 
     // 🔹 Create and append hidden input fields
     Object.entries(this.getPaymentFormData()).forEach(([key, value]) => {
@@ -147,18 +152,21 @@ export class ReviewComponent implements OnInit {
 
   private getPaymentFormData(): { [key: string]: string } {
     return {
-      merchantId: this.merchantId,
+      // dynamic
+      secureHash: this.hash,
       amount: this.amount,
       orderRef: this.refCode,
-      currCode: '608',
-      successUrl: this.successUrl,
-      failUrl: this.failUrl,
-      cancelUrl: this.cancelUrl,
-      payType: 'N',
-      lang: 'E',
-      mpsMode: 'NIL',
-      payMethod: 'ALL',
-      secureHash: this.hash,
+
+      // config
+      merchantId: PAYMENT_CONFIG.merchantId,
+      currCode: PAYMENT_CONFIG.currCode,
+      successUrl: PAYMENT_CONFIG.successUrl,
+      failUrl: PAYMENT_CONFIG.failUrl,
+      cancelUrl: PAYMENT_CONFIG.cancelUrl,
+      payType: PAYMENT_CONFIG.payType,
+      lang: PAYMENT_CONFIG.lang,
+      mpsMode: PAYMENT_CONFIG.mpsMode,
+      payMethod: PAYMENT_CONFIG.payMethod,
       remark: '',
       redirect: '',
       oriCountry: '',
