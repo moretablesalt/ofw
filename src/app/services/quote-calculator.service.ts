@@ -1,11 +1,24 @@
-import {Injectable, signal} from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuoteCalculatorService {
 
-  private quote = signal<number | null>(null);
+  private readonly STORAGE_KEY = 'quote';
+  private quote = signal<number | null>(this.loadQuote());
+
+  constructor() {
+    // Automatically save to sessionStorage when the signal changes
+    effect(() => {
+      const value = this.quote();
+      if (value === null) {
+        sessionStorage.removeItem(this.STORAGE_KEY);
+      } else {
+        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(value));
+      }
+    });
+  }
 
   setQuote(value: number | null) {
     this.quote.set(value);
@@ -15,7 +28,8 @@ export class QuoteCalculatorService {
     return this.quote();
   }
 
-  quoteSignal = this.quote;
-
-  constructor() { }
+  private loadQuote(): number | null {
+    const raw = sessionStorage.getItem(this.STORAGE_KEY);
+    return raw ? Number(raw) : null;
+  }
 }
