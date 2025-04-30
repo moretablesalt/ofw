@@ -21,7 +21,7 @@
         </div>
       }
       @if (stepsService.step() == 1) {
-        <button class="continue-btn" (click)="continue()">Continue</button>
+        <button nz-button [nzLoading]="isLoading" class="continue-btn" (click)="continue()">Continue</button>
       }
     }
   <!--<button class="change-btn" (click)="changePlan()">Change Plan</button>-->

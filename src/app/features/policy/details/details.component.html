@@ -41,7 +41,13 @@
     </div>
   }
   <div class="button-container">
-    <button class="continue" (click)="continue()">Continue</button>
+    <button
+      nz-button
+      [nzLoading]="isLoading"
+      class="continue"
+      (click)="continue()"
+    >Continue
+    </button>
   </div>
 }
 

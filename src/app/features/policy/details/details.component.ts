@@ -5,6 +5,7 @@ import { ProductService } from '../../../services/product.service';
 import { PRODUCTS } from '../../../data/product-data';
 import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 import { Details2Component } from '../details2/details2.component';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
 
 interface Coverage {
   coverage: string;
@@ -22,7 +23,8 @@ interface Product {
 @Component({
   selector: 'app-details',
   imports: [
-    Details2Component
+    Details2Component,
+    NzButtonComponent
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
@@ -37,6 +39,7 @@ export class DetailsComponent implements OnInit {
   products = PRODUCTS;
 
   public selectedProduct: Product | undefined;
+  isLoading = false;
 
   ngOnInit(): void {
     this.stepsService.setStep(1);
@@ -44,7 +47,10 @@ export class DetailsComponent implements OnInit {
   }
 
   continue() {
-    this.router.navigate(['/policy/application-form']);
+    this.isLoading = true;
+    setTimeout(() => {
+      this.router.navigate(['/policy/application-form']);
+      }, 500)
   }
 
   setEnvironment(type: 'sea' | 'land') {

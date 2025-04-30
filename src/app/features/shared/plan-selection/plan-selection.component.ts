@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { StepsService } from '../steps/steps.service';
 import { TitleCasePipe } from '@angular/common';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-plan-selection',
   imports: [
-    TitleCasePipe
+    TitleCasePipe,
+    NzButtonComponent
   ],
   templateUrl: './plan-selection.component.html',
   styleUrl: './plan-selection.component.css'
@@ -27,16 +29,17 @@ export class PlanSelectionComponent implements OnInit{
   products = PRODUCTS;
 
   chosenProduct: Product | undefined;
+  isLoading = false;
 
   ngOnInit() {
     this.chosenProduct = this.products.find(p => p.id === this.productService.getProductId());
   }
 
   continue() {
-    this.router.navigate(['/policy/application-form']);
-  }
+    this.isLoading = true;
 
-  changePlan() {
-    this.router.navigate(['']);
+    setTimeout(() => {
+      this.router.navigate(['/policy/application-form']);
+    }, 500)
   }
 }

@@ -35,6 +35,10 @@
   width: 100%;
 }
 
+::ng-deep .ant-btn {
+  height: 45px;
+}
+
 .continue {
   background-color: #219d69;
   color: white;

@@ -14,6 +14,7 @@ import { InsuranceEnvironmentService } from '../../../services/insurance-environ
 import { NzFormControlComponent, NzFormItemComponent } from 'ng-zorro-antd/form';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { FAKE_APPLICATION_FORM_DATA } from '../../../app.constants';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-application-form',
@@ -26,6 +27,7 @@ import { FAKE_APPLICATION_FORM_DATA } from '../../../app.constants';
     NzFormControlComponent,
     NzCheckboxComponent,
     NzFormItemComponent,
+    NzButtonComponent,
   ],
   templateUrl: './application-form.component.html',
   styleUrl: './application-form.component.css'
@@ -34,6 +36,7 @@ export class ApplicationFormComponent implements OnInit {
   form!: FormGroup;
   chosenProductId = 'B';
   chosenEnv = 'sea';
+  isLoading = false;
 
   private destroy$ = new Subject<void>();
 
@@ -108,13 +111,16 @@ export class ApplicationFormComponent implements OnInit {
     // end helpers
   continue() {
 
-    this.validateAllFormFields(this.form);
+    this.isLoading = true;
 
-    if (this.form.invalid) {
-      this.scrollToFirstInvalidField();
-    }
+    setTimeout(() => {
+      this.validateAllFormFields(this.form);
 
-    this.router.navigate(['/policy/review']);
+      if (this.form.invalid) {
+        this.scrollToFirstInvalidField();
+      }
+      this.router.navigate(['/policy/review']);
+    }, 500)
   }
 
   private scrollToFirstInvalidField(): void {

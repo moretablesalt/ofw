@@ -2,18 +2,19 @@ import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
 import { ApplicationFormStorageService } from '../../../services/application-form-storage.service';
-import { DatePipe, JsonPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
 import { ApplicationBuilderService } from '../../../services/application-builder.service';
-import { switchMap } from 'rxjs';
+import { catchError, switchMap, throwError } from 'rxjs';
 import { PAYMENT_CONFIG } from '../../../app.constants';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-review',
   imports: [
     DatePipe,
-    JsonPipe
+    NzButtonComponent
   ],
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
@@ -34,6 +35,7 @@ export class ReviewComponent implements OnInit {
 
   // pesopay form
   amount: any;
+  isLoading = false;
 
   ngOnInit(): void {
     this.stepsService.setStep(3);
@@ -42,22 +44,33 @@ export class ReviewComponent implements OnInit {
   }
 
   continue() {
-    this.applicationBuilderService.postData(this.payload)
-      .pipe(
-        switchMap(response => {
-          const refCode = response.referenceCode;
-          this.refCode = refCode;
-          this.amount = this.quoteCalculatorService.getQuote() !== null ? this.quoteCalculatorService.getQuote()!.toString() : '';
-          return this.applicationBuilderService.generateHash(refCode, this.amount);
-        })
-      ).subscribe(hash => {
-        this.hash = hash.secretHash;
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.applicationBuilderService.postData(this.payload)
+        .pipe(
+          switchMap(response => {
+            const refCode = response.referenceCode;
+            this.refCode = refCode;
+            this.amount = this.quoteCalculatorService.getQuote() !== null ? this.quoteCalculatorService.getQuote()!.toString() : '';
+            return this.applicationBuilderService.generateHash(refCode, this.amount);
+          }),
+          catchError(error => {
+            console.error('PostData error:', error);
+            this.isLoading = false;
+            alert('Failed to submit application. Please try again.' + JSON.stringify(error));
+            return throwError(() => error)
+          })
+        ).subscribe(hash => {
         if (hash) {
+          this.hash = hash.secretHash;
           this.createAndSubmitPaymentForm();
         } else {
           alert('Error generating hash');
-      }
-    });
+        }
+      });
+    },500)
+
   }
 
   goBack(): void {

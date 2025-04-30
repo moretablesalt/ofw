@@ -81,11 +81,6 @@
       <strong>Notice:</strong> You will be automatically redirected to a secure third party website to process the payment
     </div>
 
-    <button class="purchase-btn disabled" (click)="continue()">Purchase Policy</button>
+    <button nz-button [nzLoading]="isLoading" class="purchase-btn disabled"  (click)="continue()">Purchase Policy</button>
   </div>
 </div>
-
-{{payload | json}}
-{{refCode | json}}
-
-{{hash | json}}
