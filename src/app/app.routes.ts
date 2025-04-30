@@ -67,6 +67,11 @@ export const routes: Routes = [
     title: 'Contact Us | OFW Insurance – Prudential Guarantee',
   },
   {
+    path: 'info',
+    loadComponent: () => import('./features/info/info.component').then(m => m.InfoComponent),
+    title: 'Info | OFW Insurance – Prudential Guarantee',
+  },
+  {
     path: 'claims',
     loadComponent: () => import('./features/static/claims/claims.component').then(m => m.ClaimsComponent),
     title: 'Claims | OFW Insurance – Prudential Guarantee',

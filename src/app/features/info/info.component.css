@@ -1,0 +1,11 @@
+.env-info {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.env-info p {
+  margin: 4px 0;
+}
