@@ -105,6 +105,10 @@
   .coverage-card {
     max-width: 360px;
   }
+
+  .coverage-card h3 {
+    padding: 0;
+  }
 }
 
 @media (max-width: 768px) {
