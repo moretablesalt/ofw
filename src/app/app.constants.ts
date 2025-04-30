@@ -8,9 +8,9 @@ function getPaymentConfig() {
     lang: 'E',
     mpsMode: 'NIL',
     payMethod: 'ALL',
-    successUrl: `${origin}/confirmation`,
-    failUrl: `${origin}/confirmation`,
-    cancelUrl: `${origin}/confirmation`,
+    successUrl: `${origin}/confirmation/success`,
+    failUrl: `${origin}/confirmation/fail`,
+    cancelUrl: `${origin}/confirmation/cancel`,
     method: 'POST',
     styleDisplay: 'none',
   };

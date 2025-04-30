@@ -56,3 +56,7 @@ button {
 button:hover {
   background-color: #059669;
 }
+
+.fail {
+  background-color: #ff5f56;
+}

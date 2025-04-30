@@ -53,7 +53,10 @@ export const routes: Routes = [
   },
   {
     path: 'confirmation',
-    loadComponent: () => import('./features/confirmation/confirmation.component').then(m => m.ConfirmationComponent),
+    children: [
+      { path: '', loadComponent: () => import('./features/confirmation/confirmation.component').then(m => m.ConfirmationComponent), }, // handles just /confirmation
+      { path: ':status', loadComponent: () => import('./features/confirmation/confirmation.component').then(m => m.ConfirmationComponent), } // handles /confirmation/success etc.
+    ],
     title: 'Confirmation | OFW Insurance – Prudential Guarantee',
   },
   {

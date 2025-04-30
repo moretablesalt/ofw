@@ -1,11 +1,19 @@
 <app-steps></app-steps>
 <section>
   <div class="icon-circle">
-    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-credit-card-ecommerce-flatart-icons-outline-flatarticons.png" alt="Card Success" />
+    @if(status == 'success') {
+      <img src="images/confirmation/credit-card-success.svg" alt="Card Success" />
+    } @else {
+      <img src="images/confirmation/credit-card-fail.svg" alt="Card Error" />
+    }
   </div>
-  <h2>Payment Confirmed!</h2>
+  <h2>{{ message }}</h2>
   <p class="subtext">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    {{ subMessage }}
   </p>
-  <button (click)="backToHome()">Back to Home</button>
+  @if(status == 'success') {
+    <button (click)="backToHome()">Back to Home</button>
+  } @else {
+    <button class="fail" (click)="backToPayment()">Back to Payment Details</button>
+  }
 </section>
