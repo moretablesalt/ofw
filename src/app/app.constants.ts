@@ -1,20 +1,22 @@
-export const PAYMENT_CONFIG = {
-  url: 'https://test.pesopay.com/b2cDemo/eng/payment/payForm.jsp',
-  merchantId: '18067292',
-  currCode: '608',
-  payType: 'N',
-  lang: 'E',
-  mpsMode: 'NIL',
-  payMethod: 'ALL',
-  successUrl: 'http://localhost:4200/confirmation',
-  failUrl: 'http://localhost:4200/confirmation',
-  cancelUrl: 'http://localhost:4200/confirmation',
+function getPaymentConfig() {
+  const origin = window.location.origin;
+  return {
+    url: 'https://test.pesopay.com/b2cDemo/eng/payment/payForm.jsp',
+    merchantId: '18067292',
+    currCode: '608',
+    payType: 'N',
+    lang: 'E',
+    mpsMode: 'NIL',
+    payMethod: 'ALL',
+    successUrl: `${origin}/confirmation`,
+    failUrl: `${origin}/confirmation`,
+    cancelUrl: `${origin}/confirmation`,
+    method: 'POST',
+    styleDisplay: 'none',
+  };
+}
 
-  // non pesopay
-  method: 'POST',
-  styleDisplay: 'none',
-};
-
+export const PAYMENT_CONFIG = getPaymentConfig()
 
 export const FAKE_APPLICATION_FORM_DATA = {
   personal: {
