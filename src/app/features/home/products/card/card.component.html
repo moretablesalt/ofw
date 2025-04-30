@@ -1,0 +1,21 @@
+<div class="coverage-card">
+  <div class="card-header">
+    <h3>{{ title }}</h3>
+    <img src="images/products/stars.svg" alt="" class="stars-icon" />
+  </div>
+  <hr />
+  <ul>
+    @for(item of items; track item) {
+      <li>
+        <img src="images/products/task_alt.svg" alt="" class="list-icon" />
+        {{ item }}
+      </li>
+    }
+  </ul>
+  <div class="card-actions">
+    <button nz-button [nzLoading]="isLoading" class="btn primary" [class.disabled]="productDisabled" (click)="!productDisabled && continue()">
+      Choose Plan
+    </button>
+    <button class="btn secondary" [routerLink]="learnMoreLink">Learn More</button>
+  </div>
+</div>
