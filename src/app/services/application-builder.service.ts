@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PAYMENT_CONFIG } from '../app.constants';
+import { environment } from '../../environments/environment';
 
 interface PostResponse {
   id: number;
@@ -29,7 +30,7 @@ export class ApplicationBuilderService {
   constructor() { }
 
   postData(myData: any) {
-    return this.http.post<PostResponse>('http://localhost:8080/api/applications', myData);
+    return this.http.post<PostResponse>(`${environment.BACKEND_API_URL}api/applications`, myData);
   }
 
   generateHash(refenceCode: string, amount: string) {
@@ -42,6 +43,6 @@ export class ApplicationBuilderService {
       payType: PAYMENT_CONFIG.payType
     };
 
-    return this.http.post<HashResponse>('http://localhost:8080/api/pesopay', requestPayload);
+    return this.http.post<HashResponse>(`${environment.BACKEND_API_URL}api/pesopay`, requestPayload);
   }
 }
