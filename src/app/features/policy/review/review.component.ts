@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
 import { ApplicationFormStorageService } from '../../../services/application-form-storage.service';
-import { DatePipe } from '@angular/common';
+import {DatePipe, JsonPipe} from '@angular/common';
 import { QuoteCalculatorService } from '../../../services/quote-calculator.service';
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
 import { ApplicationBuilderService } from '../../../services/application-builder.service';
@@ -14,7 +14,8 @@ import { NzButtonComponent } from 'ng-zorro-antd/button';
   selector: 'app-review',
   imports: [
     DatePipe,
-    NzButtonComponent
+    NzButtonComponent,
+    JsonPipe
   ],
   templateUrl: './review.component.html',
   styleUrl: './review.component.css'
@@ -92,7 +93,7 @@ export class ReviewComponent implements OnInit {
       startDate: startDate,
       endDate: endDate,
       product: {
-        code: "OFW_COMPULSORY"
+        code: "OFW_EXPANDED_COMPULSORY"
       },
       totalNumberOfTravelers: 1,
       travelers: [

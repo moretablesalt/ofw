@@ -31,7 +31,7 @@ export const FAKE_APPLICATION_FORM_DATA = {
     tin: '123-456-789',
     address: '123 Fake Street, QC',
     mobile: '09171234567',
-    email: 'john.doe@example.com'
+    email: 'mark.tiu@prudentialguarantee.com'
   },
   passport: {
     lastName: 'Doe',
