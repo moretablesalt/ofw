@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProductService {
-  private productIdKey = 'selectedProductId';
+  private productIdKey = 'product-id';
   private productId: string = '';
 
   setProductId(id: string) {

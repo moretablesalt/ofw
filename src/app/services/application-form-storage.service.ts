@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ApplicationFormStorageService {
-  private readonly storageKey = 'appForm';
+  private readonly storageKey = 'application-form';
   private formData$ = new BehaviorSubject<any>(null);
 
   constructor() {
