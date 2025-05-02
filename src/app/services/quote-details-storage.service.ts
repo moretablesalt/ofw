@@ -1,10 +1,10 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TimeHelperService } from './time-helper.service';
 import { format } from 'date-fns';
 
 export class QuoteModel {
-  insuranceType!: string;
+  environment!: 'land' | 'sea';
   startDate!: Date;
   endDate!: Date;
 }
@@ -33,14 +33,6 @@ export class QuoteDetailsStorageService {
     return this.quoteDetails$.getValue();
   }
 
-  observeQuoteDetails() {
-    return this.quoteDetails$.asObservable();
-  }
-
-  clear(): void {
-    this.quoteDetails$.next(null);
-    sessionStorage.removeItem(this.storageKey);
-  }
 
   getStartDateClean() {
     const startDate = this.getQuoteDetails()?.startDate;
@@ -64,5 +56,9 @@ export class QuoteDetailsStorageService {
       return this.timeHelerService.calculateMonths(details.startDate, details.endDate);
     }
     return 0;
+  }
+
+  getEnvironment(): 'land' | 'sea' | null {
+    return this.getQuoteDetails()?.environment ?? null;
   }
 }

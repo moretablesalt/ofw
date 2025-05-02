@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Quote2Component } from '../quote2/quote2.component';
 import { ProductService } from '../../../services/product.service';
-import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { addYears, differenceInCalendarDays, isAfter, isBefore } from 'date-fns';
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
@@ -49,7 +48,6 @@ export class QuoteComponent implements OnInit {
   private readonly stepsService = inject(StepsService);
   private readonly quoteCalculatorService = inject(QuoteCalculatorService);
   private readonly router = inject(Router);
-  private readonly insuranceEnvironmentService = inject(InsuranceEnvironmentService);
   private readonly quoteDetailsStorageSerice = inject(QuoteDetailsStorageService);
   private readonly timeHelperService = inject(TimeHelperService);
 
@@ -77,7 +75,7 @@ export class QuoteComponent implements OnInit {
 
   private initForm(): void {
     this.insuranceForm = this.fb.group({
-      insuranceType: ['sea', Validators.required],
+      environment: ['sea', Validators.required],
       startDate: [null, Validators.required],
       endDate: [null, Validators.required]
     });
@@ -112,8 +110,6 @@ export class QuoteComponent implements OnInit {
 
     if (premium) {
       setTimeout(() => {
-        // Store the environment (Land or Sea)
-        this.insuranceEnvironmentService.setEnvironment(insuranceType);
         this.quoteCalculatorService.setQuote(premium);
         this.router.navigate(['/policy/details']).finally(() => this.isLoading = false);
       }, 500);

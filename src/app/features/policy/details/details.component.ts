@@ -3,9 +3,9 @@ import { StepsService } from '../../shared/steps/steps.service';
 import { Router } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { PRODUCTS } from '../../../data/product-data';
-import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 import { Details2Component } from '../details2/details2.component';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
 
 interface Coverage {
   coverage: string;
@@ -34,7 +34,7 @@ export class DetailsComponent implements OnInit {
   private stepsService = inject(StepsService);
   private router = inject(Router);
   public productService = inject(ProductService);
-  public insuranceEnvironmentService = inject(InsuranceEnvironmentService);
+  public quoteDetailsService = inject(QuoteDetailsStorageService);
 
   products = PRODUCTS;
 
@@ -51,9 +51,5 @@ export class DetailsComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/policy/application-form']);
       }, 500)
-  }
-
-  setEnvironment(type: 'sea' | 'land') {
-    this.insuranceEnvironmentService.setEnvironment(type);
   }
 }

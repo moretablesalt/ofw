@@ -10,7 +10,6 @@ import { ApplicationFormStorageService } from '../../../services/application-for
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
 import { TimeHelperService } from '../../../services/time-helper.service';
 import { ProductService } from '../../../services/product.service';
-import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 import { NzFormControlComponent, NzFormItemComponent } from 'ng-zorro-antd/form';
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { FAKE_APPLICATION_FORM_DATA } from '../../../app.constants';
@@ -46,7 +45,6 @@ export class ApplicationFormComponent implements OnInit {
   private readonly quoteDetailsStorageSerice = inject(QuoteDetailsStorageService);
   private readonly timeHelperService = inject(TimeHelperService);
   private readonly productService = inject(ProductService);
-  private readonly insuranceEnvironmentService = inject(InsuranceEnvironmentService);
 
   constructor(private fb: FormBuilder) {
     this.buildForm();
@@ -91,7 +89,6 @@ export class ApplicationFormComponent implements OnInit {
 
   private removeVesselIfLandEnv() {
     this.chosenProductId = this.productService.getProductId();
-    this.chosenEnv = this.insuranceEnvironmentService.environment();
 
     if (this.chosenEnv === 'land') {
       if (this.form.get('work')) {

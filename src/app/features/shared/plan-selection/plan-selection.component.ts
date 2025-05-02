@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { InsuranceEnvironmentService } from '../../../services/insurance-environment.service';
 import { PRODUCTS } from '../../../data/product-data';
 import { Product } from '../../../models/product.model';
 import { ProductService } from '../../../services/product.service';
@@ -8,6 +7,7 @@ import { QuoteCalculatorService } from '../../../services/quote-calculator.servi
 import { StepsService } from '../steps/steps.service';
 import { TitleCasePipe } from '@angular/common';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
 
 @Component({
   selector: 'app-plan-selection',
@@ -24,7 +24,7 @@ export class PlanSelectionComponent implements OnInit{
   private router = inject(Router);
   public quoteCalculatorService = inject(QuoteCalculatorService);
   public stepsService = inject(StepsService);
-  public insuranceEnvironmentService = inject(InsuranceEnvironmentService);
+  public quoteDetailsService = inject(QuoteDetailsStorageService)
 
   products = PRODUCTS;
 

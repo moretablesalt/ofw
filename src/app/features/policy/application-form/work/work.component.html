@@ -37,7 +37,7 @@
         </nz-form-control>
       </nz-form-item>
     </nz-col>
-    @if(chosenEnv == 'sea') {
+    @if(quoteDetailsService.getEnvironment() == 'sea') {
       <nz-col [nzXs]="24" [nzMd]="12">
         <nz-form-item>
           <nz-form-label [nzRequired]="true" nzFor="vesselName">Vessel Name</nz-form-label>

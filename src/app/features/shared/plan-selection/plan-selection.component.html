@@ -9,7 +9,7 @@
           <p>
             <span class="currency">$</span><span class="amount">{{ quoteCalculatorService.getQuote() }}</span><span> total</span>
           </p>
-          <p class="environment">{{ insuranceEnvironmentService.environment() | titlecase }} Based</p>
+          <p class="environment">{{ quoteDetailsService.getEnvironment() | titlecase }} Based</p>
         </div>
       }
 

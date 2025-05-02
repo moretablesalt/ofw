@@ -1,5 +1,5 @@
 @if(productService.getProductId() === 'B') {
-  @if (insuranceEnvironmentService.environment() === 'sea') {
+  @if (quoteDetailsService.getEnvironment()=== 'sea') {
     <div class="tab-content">
       <table class="coverage-table">
         <thead>
@@ -20,7 +20,7 @@
     </div>
   }
 
-  @if (insuranceEnvironmentService.environment() === 'land') {
+  @if (quoteDetailsService.getEnvironment() === 'land') {
     <div class="tab-content">
       <table class="coverage-table">
         <thead>

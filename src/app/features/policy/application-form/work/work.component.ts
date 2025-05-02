@@ -6,8 +6,8 @@ import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
 import { NgForOf } from '@angular/common';
 import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
-import { InsuranceEnvironmentService } from '../../../../services/insurance-environment.service';
 import { addYears, differenceInCalendarDays, isAfter, isBefore } from 'date-fns';
+import { QuoteDetailsStorageService } from '../../../../services/quote-details-storage.service';
 
 @Component({
   selector: 'app-work',
@@ -28,18 +28,14 @@ import { addYears, differenceInCalendarDays, isAfter, isBefore } from 'date-fns'
   templateUrl: './work.component.html',
   styleUrl: './work.component.css'
 })
-export class WorkComponent implements OnInit {
+export class WorkComponent {
   @Input() workForm!: FormGroup;
   @ViewChild('endDatePicker') endDatePicker!: NzDatePickerComponent;
   countries = ['Philippines', 'Japan', 'USA'];
-  chosenEnv: 'sea' | 'land' | null = null;
+
   today = new Date();
 
-  private readonly insuranceEnvironmentService = inject(InsuranceEnvironmentService);
-
-  ngOnInit() {
-    this.chosenEnv = this.insuranceEnvironmentService.environment();
-  }
+  public readonly quoteDetailsService = inject(QuoteDetailsStorageService);
 
   // Cannot select days before today and today
   disabledStartDate = (current: Date): boolean =>

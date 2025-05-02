@@ -11,7 +11,7 @@
           <strong>Choose Your Insurance Type</strong>
         </nz-form-label>
         <nz-form-control>
-          <nz-radio-group formControlName="insuranceType" [nzDisabled]="isLoading">
+          <nz-radio-group formControlName="environment" [nzDisabled]="isLoading">
             <label nz-radio [nzValue]="'sea'">Sea Based</label>
             <label nz-radio [nzValue]="'land'">Land Based</label>
           </nz-radio-group>
@@ -55,6 +55,3 @@
 } @else {
   <app-quote2></app-quote2>
 }
-
-{{monthsCovered}}
-{{today}}
