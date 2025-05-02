@@ -112,7 +112,8 @@ export class QuoteComponent implements OnInit {
 
     const matchedRate = this.INSURANCE_RATES.find(rate => rate.months >= this.monthsCovered);
     if (!matchedRate) {
-      console.error('No available bracket for', this.monthsCovered, 'months');
+      alert('No available bracket for ' + this.monthsCovered + ' months');
+      this.isLoading = false;
       return;
     }
 
@@ -144,6 +145,7 @@ export class QuoteComponent implements OnInit {
 
     const start = new Date(startDate);
     const maxDate = addYears(start, 3);
+    maxDate.setHours(23, 59, 59, 999);
 
     return isBefore(current, start) || isAfter(current, maxDate);
   };
