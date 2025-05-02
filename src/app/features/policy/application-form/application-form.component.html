@@ -1,41 +1,41 @@
 <form [formGroup]="form" (ngSubmit)="continue()">
   <div class="container">
-  <button type="button" (click)="fillWithFakeData()">Fill with Fake Data</button>
-  <app-personal-data [personalForm]="personalFormGroup"></app-personal-data>
-  <br>
-  <br>
-  <app-passport [passportForm]="passportFormGroup"></app-passport>
-  <br>
-  <br>
-  <app-work [workForm]="workFormGroup"></app-work>
-  <br>
-  <br>
-    <nz-form-item>
-      <nz-form-control [nzErrorTip]="'You must accept the terms.'">
-        <label nz-checkbox formControlName="acceptTerms">
-          I hereby apply for participation in the OFW-Shield Insurance Policy which I am or may have become eligible for,
-          subject to the terms and conditions of the Master Policy. I hereby agree that my insurance shall become effective
-          upon approval of the Company provided that I have met all eligibility condition and am in good health on such
-          date and when the full premium corresponding to my insurance coverage has been paid. I hereby agree and declare
-          that all the foregoing statements, declarations, and names in this application form together with those stated
-          in any requested medical examination, questionnaire, or amendment, are complete and true and correctly recorded
-          and shall form the basis for Prudential Guarantee and Assurance Inc. to determine eligibility for the OFW-Shield
-          Insurance Plan and with the Master Policy and its attachment will constitute the entire contract.
-          <br />
-          <br />
-          Ako ay opisyal na nagpapahayag ng aplikasyon para sa partisipasyon ng OFW-Shield Insurance Plan, kung saan ako man ay, o maaring
-          maging kwalipikado, batay sa mga kataga at kondisyon ng Master Policy. Ako ay sumasang-ayon na ang aking insurance plan ay magiging
-          epektibo lamang sa pamamagitan ng pag-aprubra ng Kumpanya batay sa aking pagtugon sa mga kwalipikasyon at batay sa aking pagkakaroon
-          ng maayos na kalusugan sa araw ng pag-bayad ng kabuuang premium na isinasaad ng saklaw ng insurance. Ako ay opisyal na nagpapahayag ng
-          pag sang-ayon na ang lahat ng mga nakasaad, deklarasyon, at mga pangalan sa aplikasyong ito, kasama ng mga nakahayag sa mga
-          isinumiteng dokumentong medical, palatanungan, o susog ay kumpleto, ay kumpleto, totoo, at wastong iniimbag. Ang mga ito ay magiging
-          basehan ng Prudential Guarantee and Assurance Inc. upang pag pasiyahan ang aking pagiging karapat-dapat sa OFW-Shield Insurance Plan,
-          at sa pag-buo ng kontrata, kasama ng Master Policy at sa mga attachments nito.
-        </label>
-      </nz-form-control>
-    </nz-form-item>
-  <div class="button-container">
-    <button nz-button [nzLoading]="isLoading" class="continue" type="submit">Continue</button>
+    <button type="button" (click)="fillWithFakeData()">Fill with Fake Data</button>
+    <app-personal-data [personalForm]="personalFormGroup"></app-personal-data>
+    <br>
+    <br>
+    <app-passport [passportForm]="passportFormGroup"></app-passport>
+    <br>
+    <br>
+    <app-work [workForm]="workFormGroup"></app-work>
+    <br>
+    <br>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="'You must accept the terms.'">
+          <label nz-checkbox formControlName="acceptTerms">
+            I hereby apply for participation in the OFW-Shield Insurance Policy which I am or may have become eligible for,
+            subject to the terms and conditions of the Master Policy. I hereby agree that my insurance shall become effective
+            upon approval of the Company provided that I have met all eligibility condition and am in good health on such
+            date and when the full premium corresponding to my insurance coverage has been paid. I hereby agree and declare
+            that all the foregoing statements, declarations, and names in this application form together with those stated
+            in any requested medical examination, questionnaire, or amendment, are complete and true and correctly recorded
+            and shall form the basis for Prudential Guarantee and Assurance Inc. to determine eligibility for the OFW-Shield
+            Insurance Plan and with the Master Policy and its attachment will constitute the entire contract.
+            <br />
+            <br />
+            Ako ay opisyal na nagpapahayag ng aplikasyon para sa partisipasyon ng OFW-Shield Insurance Plan, kung saan ako man ay, o maaring
+            maging kwalipikado, batay sa mga kataga at kondisyon ng Master Policy. Ako ay sumasang-ayon na ang aking insurance plan ay magiging
+            epektibo lamang sa pamamagitan ng pag-aprubra ng Kumpanya batay sa aking pagtugon sa mga kwalipikasyon at batay sa aking pagkakaroon
+            ng maayos na kalusugan sa araw ng pag-bayad ng kabuuang premium na isinasaad ng saklaw ng insurance. Ako ay opisyal na nagpapahayag ng
+            pag sang-ayon na ang lahat ng mga nakasaad, deklarasyon, at mga pangalan sa aplikasyong ito, kasama ng mga nakahayag sa mga
+            isinumiteng dokumentong medical, palatanungan, o susog ay kumpleto, ay kumpleto, totoo, at wastong iniimbag. Ang mga ito ay magiging
+            basehan ng Prudential Guarantee and Assurance Inc. upang pag pasiyahan ang aking pagiging karapat-dapat sa OFW-Shield Insurance Plan,
+            at sa pag-buo ng kontrata, kasama ng Master Policy at sa mga attachments nito.
+          </label>
+        </nz-form-control>
+      </nz-form-item>
+    <div class="button-container">
+      <button nz-button [nzLoading]="isLoading" class="continue" type="submit">Continue</button>
+    </div>
   </div>
-
-</div>
+</form>

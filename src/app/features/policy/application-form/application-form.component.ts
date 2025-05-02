@@ -118,8 +118,9 @@ export class ApplicationFormComponent implements OnInit {
 
       if (this.form.invalid) {
         this.scrollToFirstInvalidField();
+      } else {
+        this.router.navigate(['/policy/review']);
       }
-      this.router.navigate(['/policy/review']);
     }, 500)
   }
 
