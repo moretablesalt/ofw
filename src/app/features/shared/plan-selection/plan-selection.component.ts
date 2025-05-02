@@ -39,7 +39,7 @@ export class PlanSelectionComponent implements OnInit{
     this.isLoading = true;
 
     setTimeout(() => {
-      this.router.navigate(['/policy/application-form']);
+      this.router.navigate(['/policy/application-form']).finally(() => this.isLoading = false);
     }, 500)
   }
 }

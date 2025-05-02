@@ -110,16 +110,15 @@ export class ApplicationFormComponent implements OnInit {
 
     // end helpers
   continue() {
-
     this.isLoading = true;
+    this.validateAllFormFields(this.form);
 
     setTimeout(() => {
-      this.validateAllFormFields(this.form);
-
       if (this.form.invalid) {
         this.scrollToFirstInvalidField();
+        this.isLoading = false;
       } else {
-        this.router.navigate(['/policy/review']);
+        this.router.navigate(['/policy/review']).finally(() => this.isLoading = false);
       }
     }, 500)
   }
