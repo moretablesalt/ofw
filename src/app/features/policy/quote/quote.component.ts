@@ -103,34 +103,25 @@ export class QuoteComponent implements OnInit {
       this.insuranceForm.markAllAsTouched();
       return;
     }
-
     this.isLoading = true;
 
     const { insuranceType, startDate, endDate } = this.insuranceForm.value;
-
     this.monthsCovered = this.timeHelperService.calculateMonths(startDate, endDate);
 
-    const matchedRate = this.INSURANCE_RATES.find(rate => rate.months >= this.monthsCovered);
-    if (!matchedRate) {
-      alert('No available bracket for ' + this.monthsCovered + ' months');
-      this.isLoading = false;
-      return;
-    }
+    const premium = this.calculatePremium(insuranceType, this.monthsCovered);
 
-    const premium = insuranceType === 'land'
-      ? matchedRate.landBased
-      : matchedRate.seaBased;
-
-    setTimeout(() => {
-      this.quoteCalculatorService.setQuote(premium);
-      this.insuranceEnvironmentService.setEnvironment(insuranceType);
-      this.isLoading = false;
-      this.router.navigate(['/policy/details']).finally(() => this.isLoading = false);
-      this.isLoading = false
+    if (premium) {
+      setTimeout(() => {
+        // Store the environment (Land or Sea)
+        this.insuranceEnvironmentService.setEnvironment(insuranceType);
+        this.quoteCalculatorService.setQuote(premium);
+        this.router.navigate(['/policy/details']).finally(() => this.isLoading = false);
       }, 500);
-    this.insuranceForm.enable();
+      this.insuranceForm.enable();
+    } else {
+      this.isLoading = false;
+    }
   }
-
 
   // Cannot select days before today and today
   disabledStartDate = (current: Date): boolean =>
@@ -145,8 +136,19 @@ export class QuoteComponent implements OnInit {
 
     const start = new Date(startDate);
     const maxDate = addYears(start, 3);
+
+    // set at end of day
     maxDate.setHours(23, 59, 59, 999);
 
     return isBefore(current, start) || isAfter(current, maxDate);
   };
+
+  calculatePremium(insuranceType: string, monthsCovered: number): number | null {
+    const matchedRate = this.INSURANCE_RATES.find(rate => rate.months >= monthsCovered);
+    if (!matchedRate) return null;
+
+    return insuranceType === 'land'
+      ? matchedRate.landBased
+      : matchedRate.seaBased;
+  }
 }
