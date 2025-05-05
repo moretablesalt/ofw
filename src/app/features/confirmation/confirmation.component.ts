@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { StepsService } from '../shared/steps/steps.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { StepsComponent } from '../shared/steps/steps.component';
-import { ApplicationFormStorageService } from '../../services/application-form-storage.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -22,7 +21,6 @@ export class ConfirmationComponent implements OnInit {
   private stepsService = inject(StepsService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  private applicationFormStorageService = inject(ApplicationFormStorageService);
 
   ngOnInit(): void {
     this.stepsService.setStep(4);
