@@ -44,7 +44,10 @@
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="issuedOn">Issued On</nz-form-label>
         <nz-form-control [nzErrorTip]="'Issue date is required'">
-          <nz-date-picker id="issuedOn" formControlName="issuedOn"></nz-date-picker>
+          <nz-date-picker
+            id="issuedOn"
+            formControlName="issuedOn"
+            [nzDisabledDate]="disabledStartDate"></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
     </nz-col>

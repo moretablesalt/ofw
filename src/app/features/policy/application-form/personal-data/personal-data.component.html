@@ -63,7 +63,9 @@
       <nz-form-item>
         <nz-form-label [nzRequired]="true">Birth Date</nz-form-label>
         <nz-form-control [nzErrorTip]="'Birth date is required'">
-          <nz-date-picker formControlName="birthDate"></nz-date-picker>
+          <nz-date-picker
+            formControlName="birthDate"
+            [nzDisabledDate]="disabledStartDate"></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
     </nz-col>

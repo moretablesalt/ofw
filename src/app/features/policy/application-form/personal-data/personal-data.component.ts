@@ -5,6 +5,7 @@ import { NzOptionComponent, NzSelectComponent } from 'ng-zorro-antd/select';
 import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
+import { differenceInCalendarDays } from 'date-fns';
 
 @Component({
   selector: 'app-personal-data',
@@ -26,4 +27,8 @@ import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
 })
 export class PersonalDataComponent {
   @Input() personalForm!: FormGroup;
+  today = new Date();
+
+  disabledStartDate = (current: Date): boolean =>
+    differenceInCalendarDays(current, this.today) < 0;
 }

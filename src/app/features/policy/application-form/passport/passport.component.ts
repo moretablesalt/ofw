@@ -4,6 +4,7 @@ import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzFormControlComponent, NzFormDirective, NzFormItemComponent, NzFormLabelComponent } from 'ng-zorro-antd/form';
 import { NzInputDirective } from 'ng-zorro-antd/input';
 import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
+import { differenceInCalendarDays } from 'date-fns';
 
 @Component({
   selector: 'app-passport',
@@ -23,4 +24,8 @@ import { NzDatePickerComponent } from 'ng-zorro-antd/date-picker';
 })
 export class PassportComponent {
   @Input() passportForm!: FormGroup;
+  today = new Date();
+
+  disabledStartDate = (current: Date): boolean =>
+    differenceInCalendarDays(current, this.today) < 0;
 }
