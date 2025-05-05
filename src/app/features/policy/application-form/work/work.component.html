@@ -2,7 +2,7 @@
 <form [formGroup]="workForm" nz-form nzLayout="vertical">
   <nz-form-item>
     <nz-form-label [nzRequired]="true" nzFor="companyName">Company Name</nz-form-label>
-    <nz-form-control>
+    <nz-form-control [nzErrorTip]="'Company name is required.'">
       <input nz-input id="companyName" formControlName="companyName" />
     </nz-form-control>
   </nz-form-item>
@@ -11,7 +11,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="address">Address</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Address is required.'">
           <input nz-input id="address" formControlName="address" />
         </nz-form-control>
       </nz-form-item>
@@ -19,7 +19,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="country">Country</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Country is required.'">
           <nz-select id="country" formControlName="country">
             <nz-option *ngFor="let c of countries" [nzValue]="c" [nzLabel]="c"></nz-option>
           </nz-select>
@@ -32,7 +32,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="industry">Industry</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Industry is required.'">
           <input nz-input id="industry" formControlName="industry" />
         </nz-form-control>
       </nz-form-item>
@@ -41,7 +41,7 @@
       <nz-col [nzXs]="24" [nzMd]="12">
         <nz-form-item>
           <nz-form-label [nzRequired]="true" nzFor="vesselName">Vessel Name</nz-form-label>
-          <nz-form-control>
+          <nz-form-control [nzErrorTip]="'Vessel name is required.'">
             <input nz-input id="vesselName" formControlName="vesselName" />
           </nz-form-control>
         </nz-form-item>
@@ -53,7 +53,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="designation">Designation</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Designation is required.'">
           <input nz-input id="designation" formControlName="designation" />
         </nz-form-control>
       </nz-form-item>
@@ -61,20 +61,18 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="contactNo">Contact No.</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Contact number is required.'">
           <input nz-input id="contactNo" formControlName="contactNo" />
         </nz-form-control>
       </nz-form-item>
     </nz-col>
   </nz-row>
 
-
-
   <nz-row [nzGutter]="16">
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="startDate">Start Date</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'Start date is required.'">
           <nz-date-picker
             formControlName="startDate"
             [nzDisabledDate]="disabledStartDate"
@@ -88,7 +86,7 @@
     <nz-col [nzXs]="24" [nzMd]="12">
       <nz-form-item>
         <nz-form-label [nzRequired]="true" nzFor="endDate">End Date</nz-form-label>
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="'End date is required.'">
           <nz-date-picker
             #endDatePicker
             formControlName="endDate"
@@ -104,7 +102,7 @@
 
   <nz-form-item>
     <nz-form-label [nzRequired]="true" nzFor="months">Period Coverages (Months)</nz-form-label>
-    <nz-form-control [nzErrorTip]="'The minimum amount for this field is 1.'">
+    <nz-form-control [nzErrorTip]="'Coverage period is required and must be at least 1 month.'">
       <input nz-input type="number" min="1" id="months" formControlName="months" />
     </nz-form-control>
   </nz-form-item>

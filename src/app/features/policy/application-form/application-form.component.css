@@ -51,10 +51,17 @@
 }
 
 ::ng-deep .ant-form-item-explain-error {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: .7rem;
+  font-weight: 400;
 }
 
+::ng-deep nz-col {
+  padding: .4rem;
+}
+
+::ng-deep .ant-form-item-with-help .ant-form-item-explain {
+  min-height: 0;
+}
 
 @media (max-width: 768px) {
   .container {
