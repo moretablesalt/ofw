@@ -103,10 +103,10 @@ export class QuoteComponent implements OnInit {
     }
     this.isLoading = true;
 
-    const { insuranceType, startDate, endDate } = this.insuranceForm.value;
+    const { environment, startDate, endDate } = this.insuranceForm.value;
     this.monthsCovered = this.timeHelperService.calculateMonths(startDate, endDate);
 
-    const premium = this.calculatePremium(insuranceType, this.monthsCovered);
+    const premium = this.calculatePremium(environment, this.monthsCovered);
 
     if (premium) {
       setTimeout(() => {
@@ -139,11 +139,11 @@ export class QuoteComponent implements OnInit {
     return isBefore(current, start) || isAfter(current, maxDate);
   };
 
-  calculatePremium(insuranceType: string, monthsCovered: number): number | null {
+  calculatePremium(environment: string, monthsCovered: number): number | null {
     const matchedRate = this.INSURANCE_RATES.find(rate => rate.months >= monthsCovered);
     if (!matchedRate) return null;
 
-    return insuranceType === 'land'
+    return environment === 'land'
       ? matchedRate.landBased
       : matchedRate.seaBased;
   }
