@@ -28,6 +28,10 @@ export class ReviewComponent implements OnInit {
   private quoteDetailsStorageService = inject(QuoteDetailsStorageService);
   private applicationBuilderService = inject(ApplicationBuilderService);
 
+  startDate = this.quoteDetailsStorageService.getStartDateClean();
+  endDate = this.quoteDetailsStorageService.getEndDateClean();
+  period = this.quoteDetailsStorageService.getPeriod();
+
   formData!: any;
   payload: any;
   refCode: any;
@@ -83,14 +87,10 @@ export class ReviewComponent implements OnInit {
     const work = this.formData.work;
     const passport = this.formData.passport;
 
-    const startDate = this.quoteDetailsStorageService.getStartDateClean();
-    const endDate = this.quoteDetailsStorageService.getEndDateClean();
-    const period = this.quoteDetailsStorageService.getPeriod();
-
     return {
       isCreatedViaAgent: false,
-      startDate: startDate,
-      endDate: endDate,
+      startDate: this.startDate,
+      endDate: this.endDate,
       product: {
         code: "OFW_EXPANDED_COMPULSORY"
       },
@@ -127,9 +127,9 @@ export class ReviewComponent implements OnInit {
             industry: work.industry,
             vesselName: work.vesselName,
             designation: work.designation,
-            startDate: startDate,
-            endDate: endDate,
-            periodCoverage: period,
+            startDate: this.startDate,
+            endDate: this.endDate,
+            periodCoverage: this.period,
           },
           totalSumInsured: 198000
         }

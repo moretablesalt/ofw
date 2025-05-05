@@ -52,9 +52,9 @@
       <div class="pair"><div class="label">Industry:</div><div class="value">{{ formData?.work?.industry }}</div></div>
       <div class="pair"><div class="label">Vessel Name:</div><div class="value">{{ formData?.work?.vesselName }}</div></div>
       <div class="pair"><div class="label">Designation:</div><div class="value">{{ formData?.work?.designation }}</div></div>
-      <div class="pair"><div class="label">Start Date:</div><div class="value">{{ formData?.work?.startDate | date: 'longDate' }}</div></div>
-      <div class="pair"><div class="label">End Date:</div><div class="value">{{ formData?.work?.endDate | date: 'longDate' }}</div></div>
-      <div class="pair"><div class="label">Period of Coverage:</div><div class="value">{{ formData?.work?.months }} months</div></div>
+      <div class="pair"><div class="label">Start Date:</div><div class="value">{{ startDate | date: 'longDate' }}</div></div>
+      <div class="pair"><div class="label">End Date:</div><div class="value">{{ endDate | date: 'longDate' }}</div></div>
+      <div class="pair"><div class="label">Period of Coverage:</div><div class="value">{{ period }} months</div></div>
       <div class="pair"><div class="label">Contact No.:</div><div class="value">{{ formData?.work?.contactNo }}</div></div>
     </div>
     <hr>
