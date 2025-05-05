@@ -144,3 +144,38 @@ button:disabled {
 nz-input-number {
   min-width: 100px;
 }
+
+@media (max-width: 768px) {
+
+  section {
+    padding: 50px 25px;
+  }
+
+  .controls {
+    flex-direction: column;
+    flex: 1.5;
+  }
+
+  .label-container {
+    flex: 1;
+  }
+
+  .control-btn {
+    width: 70%;
+  }
+
+  nz-input-number {
+    width: 98%;
+  }
+
+  ::ng-deep .ant-input-number-input {
+    text-align: center;
+  }
+
+  .month-wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+  }
+
+}
