@@ -6,25 +6,13 @@ import { PRODUCTS } from '../../../data/product-data';
 import { Details2Component } from '../details2/details2.component';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
-
-interface Coverage {
-  coverage: string;
-  amount: string;
-  note?: string;
-}
-
-
-interface Product {
-  id: string;
-  seaCoverages: Coverage[];
-  landCoverages: Coverage[];
-}
+import { Product } from '../../../models/product.model';
 
 @Component({
   selector: 'app-details',
   imports: [
     Details2Component,
-    NzButtonComponent
+    NzButtonComponent,
   ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'

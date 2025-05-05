@@ -25,7 +25,9 @@
       <tbody>
         @for (coverage of selectedProduct?.seaCoverages; track coverage) {
           <tr>
-            <td>{{ coverage.coverage }}</td>
+            <td>@if (coverage.indent) {
+              &nbsp;&nbsp;
+            }{{ coverage.coverage }}</td>
             <td>{{ coverage.amount}}</td>
           </tr>
         }
@@ -46,7 +48,9 @@
       <tbody>
         @for (coverage of selectedProduct?.landCoverages; track coverage) {
           <tr>
-            <td>{{ coverage.coverage }}</td>
+            <td>@if (coverage.indent) {
+              &nbsp;&nbsp;
+            }{{ coverage.coverage }}</td>
             <td>{{ coverage.amount}}</td>
           </tr>
         }
