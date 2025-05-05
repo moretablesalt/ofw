@@ -11,9 +11,11 @@ import { Subject, takeUntil } from 'rxjs';
 import { Quote2Component } from '../quote2/quote2.component';
 import { ProductService } from '../../../services/product.service';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { addYears, differenceInCalendarDays, isAfter, isBefore } from 'date-fns';
+import { differenceInCalendarDays } from 'date-fns';
 import { QuoteDetailsStorageService } from '../../../services/quote-details-storage.service';
-import { TimeHelperService } from '../../../services/time-helper.service';
+import { NzTooltipDirective } from 'ng-zorro-antd/tooltip';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
 
 @Component({
   selector: 'app-quote',
@@ -30,14 +32,16 @@ import { TimeHelperService } from '../../../services/time-helper.service';
     NzRadioGroupComponent,
     NzRadioComponent,
     Quote2Component,
-    NzButtonComponent
+    NzButtonComponent,
+    NzTooltipDirective,
+    NzIconDirective,
+    NzInputNumberComponent
   ],
   templateUrl: './quote.component.html',
   styleUrl: './quote.component.css'
 })
 export class QuoteComponent implements OnInit {
   insuranceForm!: FormGroup;
-  monthsCovered = 0;
   chosenProductId = 'B';
   isLoading = false;
   today = new Date();
@@ -49,7 +53,6 @@ export class QuoteComponent implements OnInit {
   private readonly quoteCalculatorService = inject(QuoteCalculatorService);
   private readonly router = inject(Router);
   private readonly quoteDetailsStorageSerice = inject(QuoteDetailsStorageService);
-  private readonly timeHelperService = inject(TimeHelperService);
 
   private readonly INSURANCE_RATES = [
     { months: 3, landBased: 16, seaBased: 30 },
@@ -77,7 +80,8 @@ export class QuoteComponent implements OnInit {
     this.insuranceForm = this.fb.group({
       environment: ['sea', Validators.required],
       startDate: [null, Validators.required],
-      endDate: [null, Validators.required]
+      endDate: [null, Validators.required],
+      period: [null, Validators.required]
     });
   }
 
@@ -103,41 +107,24 @@ export class QuoteComponent implements OnInit {
     }
     this.isLoading = true;
 
-    const { environment, startDate, endDate } = this.insuranceForm.value;
-    this.monthsCovered = this.timeHelperService.calculateMonths(startDate, endDate);
+    const { environment, period } = this.insuranceForm.value;
 
-    const premium = this.calculatePremium(environment, this.monthsCovered);
+    const premium = this.calculatePremium(environment, period);
 
     if (premium) {
       setTimeout(() => {
         this.quoteCalculatorService.setQuote(premium);
         this.router.navigate(['/policy/details']).finally(() => this.isLoading = false);
       }, 500);
-      this.insuranceForm.enable();
     } else {
       this.isLoading = false;
+      alert('No Premium Found');
     }
   }
 
   // Cannot select days before today and today
   disabledStartDate = (current: Date): boolean =>
     differenceInCalendarDays(current, this.today) < 0;
-
-  // Cannot select earlier than start date and more than 3 years
-  disabledEndDate = (current: Date): boolean => {
-    const startDate = this.insuranceForm?.value?.startDate;
-    if (!startDate) {
-      return true; // Disable all dates if no startDate selected yet
-    }
-
-    const start = new Date(startDate);
-    const maxDate = addYears(start, 3);
-
-    // set at end of day
-    maxDate.setHours(23, 59, 59, 999);
-
-    return isBefore(current, start) || isAfter(current, maxDate);
-  };
 
   calculatePremium(environment: string, monthsCovered: number): number | null {
     const matchedRate = this.INSURANCE_RATES.find(rate => rate.months >= monthsCovered);
@@ -146,5 +133,46 @@ export class QuoteComponent implements OnInit {
     return environment === 'land'
       ? matchedRate.landBased
       : matchedRate.seaBased;
+  }
+
+  decrease() {
+    this.period?.setValue((this.period?.value || 0) - 1);
+    this.updateEndDate();
+  }
+
+  increase() {
+    this.period?.setValue((this.period?.value || 0) + 1);
+    this.updateEndDate();
+  }
+
+  get period() {
+    return this.insuranceForm.get('period');
+  }
+
+  formatMonths = (value: number | string): string => {
+    if (value === null || value === undefined) return '';
+    const n = Number(value);
+    return `${n} month${n > 1 ? 's' : ''}`;
+  };
+
+  parseMonths = (value: string): number => {
+    return parseInt(value.replace(/[^\d]/g, ''), 10);
+  };
+
+  onStartDateClose(open: boolean): void {
+    if (!open) { // triggered when picker closes
+      this.updateEndDate()
+    }
+  }
+
+  updateEndDate(): void {
+    const startDate = this.insuranceForm.get('startDate')?.value;
+    const period = this.period?.value;
+
+    if (startDate && period) {
+      const endDate = new Date(startDate);
+      endDate.setDate(endDate.getDate() + period * 30); // ~30 days/month
+      this.insuranceForm.get('endDate')?.setValue(endDate);
+    }
   }
 }

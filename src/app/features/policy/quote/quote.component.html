@@ -18,7 +18,55 @@
         </nz-form-control>
       </nz-form-item>
 
-      <p><strong>Choose Coverage Dates</strong></p>
+      <p><strong>Choose Duration and Start Date</strong></p>
+
+      <hr />
+      <div class="month-selector">
+        <div class="label-container">
+          <label class="number-of-months-label">
+            Number of Months
+            <i
+              nz-tooltip
+              nzTooltipTitle="1 month = 30 days"
+              nz-icon
+              nzType="info-circle"
+              nzTheme="outline"
+              class="info-icon"
+            ></i>
+          </label>
+          <div class="note">Minimum: 1 month, Maximum: 60 months</div>
+        </div>
+        <div class="controls">
+          <button
+            type="button"
+            nz-button
+            [disabled]="period?.value <= 1"
+            class="control-btn"
+            (click)="decrease()">
+            <span class="control-btn-text">−</span>
+          </button>
+          <div class="month-wrapper">
+            <nz-input-number
+              type="number"
+              class="month-input"
+              formControlName="period"
+              nzMin="1"
+              nzMax="60"
+              [nzFormatter]="formatMonths"
+              [nzParser]="parseMonths"
+            />
+          </div>
+          <button
+            type="button"
+            nz-button
+            [disabled]="period?.value >= 60"
+            class="control-btn"
+            (click)="increase()">
+            <span class="control-btn-text">+</span>
+          </button>
+        </div>
+      </div>
+      <hr class="bottom-hr"/>
 
       <nz-row class="form-row" [nzGutter]="16">
         <nz-col [nzXs]="24" [nzMd]="12">
@@ -28,7 +76,9 @@
               <nz-date-picker
                 [nzDisabled]="isLoading"
                 [nzDisabledDate]="disabledStartDate"
-                formControlName="startDate"></nz-date-picker>
+                formControlName="startDate"
+                (nzOnOpenChange)="onStartDateClose($event)">>
+              </nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </nz-col>
@@ -37,14 +87,14 @@
             <nz-form-label [nzRequired]="true">End Date</nz-form-label>
             <nz-form-control [nzErrorTip]="'End date is required'">
               <nz-date-picker
-                [nzDisabled]="isLoading"
-                [nzDisabledDate]="disabledEndDate"
+                [nzDisabled]="true"
                 formControlName="endDate"></nz-date-picker>
             </nz-form-control>
           </nz-form-item>
         </nz-col>
       </nz-row>
       <button nz-button
+              class="generate-quote-btn"
               type="submit"
               [disabled]="insuranceForm.invalid"
               [nzLoading]="isLoading">
