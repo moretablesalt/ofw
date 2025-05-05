@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     description: 'Rehires and Direct Hires Migrant Workers',
     seaCoverages: [
       { coverage: 'Accidental Death (Loss of Life)', amount: 'USD 5,000.00' },
-      { coverage: 'Permanent Total Disablement', amount: 'USD 5,00.00' },
+      { coverage: 'Permanent Total Disablement', amount: 'USD 5,000.00' },
       { coverage: 'Repatriation Cost (Death and/or Termination of Employment)', amount: 'Actual Cost' },
       { coverage: 'Subsistence Allowance', amount: 'USD 100.00 per month, max of (6) months' },
       { coverage: 'Money claims arising from the Employer\'s liability', amount: 'USD 1,000.00 per month, max of (6) months' },
