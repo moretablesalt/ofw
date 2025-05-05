@@ -63,6 +63,25 @@
   min-height: 0;
 }
 
+::ng-deep .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  content: none !important;
+}
+
+::ng-deep .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional) {
+  display: flex;
+  align-items: flex-start; /* aligns asterisk to top of text */
+  gap: 2px; /* space between text and asterisk */
+}
+
+::ng-deep .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+  display: inline-block;
+  color: #ff4d4f;
+  font-size: 14px;
+  font-family: SimSun, sans-serif;
+  line-height: 1;
+  content: "*";
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 2rem 1rem;
