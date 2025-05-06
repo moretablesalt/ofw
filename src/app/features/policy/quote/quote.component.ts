@@ -77,6 +77,10 @@ export class QuoteComponent implements OnInit {
     this.stepsService.setStep(0);
     this.quoteCalculatorService.setQuote(null);
     this.chosenProductId = this.productService.getProductId();
+
+    this.insuranceForm.get('period')?.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.updateEndDate()); // your custom method);
   }
 
   private initForm(): void {
@@ -140,12 +144,10 @@ export class QuoteComponent implements OnInit {
 
   decrease() {
     this.period?.setValue((this.period?.value || 0) - 1);
-    this.updateEndDate();
   }
 
   increase() {
     this.period?.setValue((this.period?.value || 0) + 1);
-    this.updateEndDate();
   }
 
   get period() {
