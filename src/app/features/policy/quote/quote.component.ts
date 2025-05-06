@@ -54,6 +54,7 @@ export class QuoteComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly quoteDetailsStorageSerice = inject(QuoteDetailsStorageService);
 
+  // Rate for rehires
   private readonly INSURANCE_RATES = [
     { months: 3, landBased: 16, seaBased: 30 },
     { months: 5, landBased: 24, seaBased: 45 },
@@ -62,7 +63,9 @@ export class QuoteComponent implements OnInit {
     { months: 18, landBased: 68, seaBased: 128 },
     { months: 24, landBased: 80, seaBased: 150 },
     { months: 30, landBased: 108, seaBased: 203 },
-    { months: 36, landBased: 120, seaBased: 225 }
+    { months: 36, landBased: 120, seaBased: 225 },
+    { months: 48, landBased: 160, seaBased: 300 },
+    { months: 60, landBased: 200, seaBased: 375 }
   ];
 
   constructor(private fb: FormBuilder) {}
