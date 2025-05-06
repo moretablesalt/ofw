@@ -14,6 +14,7 @@ import { NzFormControlComponent, NzFormItemComponent } from 'ng-zorro-antd/form'
 import { NzCheckboxComponent } from 'ng-zorro-antd/checkbox';
 import { FAKE_APPLICATION_FORM_DATA } from '../../../app.constants';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { noWhitespaceValidator } from '../../../validators/no-whitespace.validator';
 
 @Component({
   selector: 'app-application-form',
@@ -157,55 +158,55 @@ export class ApplicationFormComponent implements OnInit {
 
   private buildPersonalGroup(): FormGroup {
     return this.fb.group({
-      lastName: ['', Validators.required],
-      firstName: ['', Validators.required],
+      lastName: ['', [Validators.required, noWhitespaceValidator]],
+      firstName: ['', [Validators.required, noWhitespaceValidator]],
       middleInitial: [''],
       title: ['', Validators.required],
       civilStatus: ['', Validators.required],
       birthDate: ['', Validators.required],
       birthPlace: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(1)]],
-      tin: ['', Validators.required],
-      address: ['', Validators.required],
-      mobile: ['', Validators.required],
+      tin: ['', [Validators.required, noWhitespaceValidator]],
+      address: ['', [Validators.required, noWhitespaceValidator]],
+      mobile: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       email: ['', [Validators.required, Validators.email]]
     });
   }
 
   private buildPassportGroup(): FormGroup {
     return this.fb.group({
-      lastName: ['', Validators.required],
-      firstName: ['', Validators.required],
+      lastName: ['', [Validators.required, noWhitespaceValidator]],
+      firstName: ['', [Validators.required, noWhitespaceValidator]],
       middleName: [''],
-      passportNo: ['', Validators.required],
+      passportNo: ['', [Validators.required, noWhitespaceValidator]],
       issuedOn: ['', Validators.required],
-      issuedAt: ['', Validators.required]
+      issuedAt: ['', [Validators.required, noWhitespaceValidator]]
     });
   }
 
   private buildAgencyGroup(): FormGroup {
     return this.fb.group({
-      agencyName: [''],
+      agencyName: ['', [noWhitespaceValidator]],
       telephonePrefix: ['+63'],
       telephoneNumber: [''],
       mobilePrefix: ['+63'],
       mobileNumber: [''],
-      contactPerson: [''],
-      email: ['']
+      contactPerson: ['', [noWhitespaceValidator]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
   private buildWorkGroup(): FormGroup {
     return this.fb.group({
-      companyName: ['', Validators.required],
-      address: ['', Validators.required],
-      country: ['', Validators.required],
-      industry: ['', Validators.required],
-      vesselName: ['', Validators.required],
-      designation: ['', Validators.required],
-      contactNo: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      companyName: ['', [Validators.required, noWhitespaceValidator]],
+      address: ['', [Validators.required, noWhitespaceValidator]],
+      country: ['', [Validators.required, noWhitespaceValidator]],
+      industry: ['', [Validators.required, noWhitespaceValidator]],
+      vesselName: ['', [Validators.required, noWhitespaceValidator]],
+      designation: ['', [Validators.required, noWhitespaceValidator]],
+      contactNo: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      startDate: ['', [Validators.required, noWhitespaceValidator]],
+      endDate: ['', [Validators.required, noWhitespaceValidator]],
       months: [null, Validators.required]
     });
   }
